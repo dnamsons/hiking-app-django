@@ -1,4 +1,21 @@
 body
 {
-    color: green;
+    margin: 0px auto;
+    background: url("https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg");
+    -webkit-background-size: cover; /* For WebKit*/
+    -moz-background-size: cover;    /* Mozilla*/
+    -o-background-size: cover;      /* Opera*/
+    background-size: cover;         /* Generic*/
+}
+
+/* Custom bootstrap adjustments */
+
+.navbar 
+{
+    padding: 1rem 1rem; /* 0.5rem to 1rem */
+}
+
+.nav-item
+{
+    font-weight: bold;
 }

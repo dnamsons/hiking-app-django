@@ -1,7 +1,39 @@
 {% extends 'base.html' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Homepage{% endblock %}
 
 {% block content %}
-  <h2>Home</h2>
+<div class="row">
+  <div class="col-sm">
+
+  {% if user.is_authenticated %}
+    <h2>Welcome back, {{ user.username }}!</h2>
+    <p>Varbūt var labajā pusē uzšaut kaut kādu column ar papildus info</p>
+    <p>Lietotājs ielogojas atpakaļ, ir feeds(foreach)</p>
+    <ul class="list-unstyled">
+      <li class="media mb-3">
+        <img class="align-self-center mr-3" src="http://www.downvids.net/video/bestimages/img-a-funny-joke-for-you-yoda-has-490.jpg" width="64" height="64" alt="Generic placeholder image">
+          <div class="media-body">
+            <h5 class="mt-0">Funny Joke</h5>
+            Bardzo smutny dzień. Wielki smutny dzień dzisiaj tak. Mārtiņš jest w Ameryce i nie odpowiada.
+        </div>
+      </li>
+      
+      <li class="media mb-3">
+        <img class="align-self-center mr-3" src="http://www.downvids.net/video/bestimages/img-a-funny-joke-for-you-yoda-has-490.jpg" width="64" height="64" alt="Generic placeholder image">
+          <div class="media-body">
+            <h5 class="mt-0">Funny Joke</h5>
+            Bardzo smutny dzień. Wielki smutny dzień dzisiaj tak. Mārtiņš jest w Ameryce i nie odpowiada.
+        </div>
+      </li>
+    </ul>
+
+  {% else %}
+    <h2>Welcome to HIKEFY</h2>
+    <p>Te varētu būt kaut kāds info par appu</p>
+    <p>Kaut ko vēl mazliet pamuldēt</p>
+    <p>Kaut ko vēl mazliet pamuldēt</p>
+  {% endif %}
+  </div>
+</div>
 {% endblock %}
