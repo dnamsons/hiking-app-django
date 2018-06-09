@@ -6,7 +6,7 @@ import os
 # Create your models here.
 
 def get_image_path(instance, filename):
-    return os.path.join('users', str(instance.id), filename) #/media/users/<userid>/joke.png
+    return os.path.join('user', str(instance.id), filename) #/media/users/<userid>/joke.png
 
 class UserProfile(models.Model): # Piesaistits originalajam user
     user = models.OneToOneField(User)
