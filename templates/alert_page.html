@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Whoops!{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-12">
+        {% if alert_type == 'success' %}
+        <div class="alert alert-success" role="alert">
+            {{ alert_message }}
+        </div>
+
+        {% elif alert_type == 'danger' %}
+        <div class="alert alert-danger" role="alert">
+            {{ alert_message }}
+        </div>
+
+        {% elif alert_type == 'warning' %}
+        <div class="alert alert-warning" role="alert">
+            {{ alert_message }}
+        </div>
+
+        {% elif alert_type == 'alert' %}
+        <div class="alert alert-info" role="alert">
+            {{ alert_message }}
+        </div>
+        {% endif %}
+  </div>
+</div>
+{% endblock %}

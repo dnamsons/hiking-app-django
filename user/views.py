@@ -24,8 +24,15 @@ def profile(request, user_id):
         age = calculate_age(requested_user.userprofile.birthdate)
     else:
         age = None
-    #current_user = request.user
-    #truefalse = user_id == current_user.id # Checks whether logged in user is accesing his page
 
     args = {'requested_user': requested_user, 'name': name, 'age': age}
     return render(request, 'user/profile.html', args)
+
+def edit_profile(request):
+    if request.user.is_anonymous:
+        alert_message = 'You must be logged in to edit your profile!'
+        alert_type = 'danger'
+        args = {'alert_message': alert_message, 'alert_type': alert_type}
+        return render(request, 'alert_page.html', args)
+
+    return render(request, 'user/edit_profile.html')
