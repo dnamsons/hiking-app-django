@@ -1,19 +1,36 @@
 body
 {
     margin: 0px auto;
-    background: url("https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg");
-    -webkit-background-size: cover; /* For WebKit*/
-    -moz-background-size: cover;    /* Mozilla*/
-    -o-background-size: cover;      /* Opera*/
-    background-size: cover;         /* Generic*/
+    background-color: white;
 }
 
 /* Custom bootstrap adjustments */
+
+.bg-pinegreen
+{
+    background-color: #064b34;
+}
 
 .navbar 
 {
     padding: 1rem 1rem; /* 0.5rem to 1rem */
 }
+
+.navbar-dark .navbar-nav .nav-link
+{
+    color: rgba(255, 255, 255, 1);
+}
+
+.custom-toggler .navbar-toggler-icon
+{
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.custom-toggler.navbar-toggler
+{
+    border-color: rgba(255, 255, 255, 1);
+} 
+
 
 .nav-item
 {

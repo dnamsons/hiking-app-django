@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'authentication',
+    'user',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -124,8 +125,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_ROOT = '/media/'
+
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),  # Global static file location is 'staticfiles'
+    os.path.join(BASE_DIR, "static"),  # Global static file location is 'static'
 ]
 
 LOGIN_REDIRECT_URL = 'home'
