@@ -27,5 +27,5 @@ def profile(request, user_id):
     #current_user = request.user
     #truefalse = user_id == current_user.id # Checks whether logged in user is accesing his page
 
-    args = {'user': requested_user, 'name': name, 'age': age}
+    args = {'requested_user': requested_user, 'name': name, 'age': age}
     return render(request, 'user/profile.html', args)
