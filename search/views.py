@@ -5,9 +5,9 @@ from django.contrib.auth.models import User
 # Create your views here. 
 
 def search(request):
-    query = request.GET.get('q')
+    query = request.GET.get('q', None)
 
-    if query != '':
+    if query != None and query != '':
         users = User.objects.filter(username__contains = query)
         # Velak pec si pasa principa pievienosim komentarus, routes utt.
         args = {'query': query, 'users': users}
