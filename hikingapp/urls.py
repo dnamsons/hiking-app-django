@@ -30,7 +30,10 @@ urlpatterns = [
     url(r'^logout/$', auth_views.logout, name='logout'),
 
     url(r'^user/', include('user.urls')),
+    url(r'^search/', include('search.urls')),
 
+    url(r'^ajax/validate_username/$', authentication_views.validate_username, name='validate_username'),
     url(r'^admin/', admin.site.urls),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

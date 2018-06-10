@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        {% if query != None %}<h2>Search results for {{ query }}:</h2>{% else %} <h2>Search:</h2> {% endif %}
+        <form method="GET" action="" id="searchform">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="searchbox" value="{{ request.GET.q }}" name="q" placeholder="Pehaps you seek money?"/>
+                <div class="input-group-append">
+                    <button class="btn btn-success" form="searchform" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+
+        {% if query != None %}
+        <hr class="mt-3"/>
+        <h4>Users:</h4>
+            {% if users %}
+            <ul class="list-unstyled">
+                {% for u in users %}
+                <a href="{% url 'profile' user_id=u.id %}">
+                    <li class="media mt-3">
+                        <img class="mr-3" src="/media/{{ u.userprofile.profile_image }}" alt="{{ u.username}}" width="64" height="64">
+                        <div class="media-body">
+                           <h5 class="mt-0">{{ u.username }}</h5>
+                            {{ u.userprofile.description }}
+                        </div>
+                    </li>
+                </a>
+                {% endfor %}
+            </ul>
+            {% else %}
+                <p>No users found by username "{{ query }}".</p>
+            {% endif %}
+        <hr>
+        <h4>Routes (vēl nav search)</h4>
+            {% if routes %}
+                {{ routes }}
+            {% else %}
+                <p>No routes match your search.</p>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

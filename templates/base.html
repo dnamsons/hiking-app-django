@@ -27,9 +27,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
         <ul class="navbar-nav ml-auto navbar-right">
-          <li class="nav-item"><a class="nav-link" href="">Kaut kas</a></li>
-          <li class="nav-item"><a class="nav-link" href="">Kaut kas</a></li>
-          <li class="nav-item"><a class="nav-link" href="">Kaut kas</a></li>
+          <li class="nav-item"><a class="nav-link" href="/search/">Search</a></li>
 
           {% if user.is_authenticated %}
           <li class="nav-item dropdown">
@@ -65,6 +63,8 @@
           <div class="progress-bar" role="progressbar"  style="width: 0.99%" aria-valuenow="0.99" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
     </footer>
+
+    {% block javascript %}{% endblock %}
 
   </div>
 </body>

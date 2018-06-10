@@ -6,11 +6,7 @@
 
 <div class="row">
     <div class="col-12" style="text-align: center;">
-        {% if requested_user.userprofile.profile_image == '' %}
-        <img src="/static/images/no_image.jpg" class="img-fluid img-thumbnail" width="128" height="128" alt="Profile image"  />
-        {% else %}
         <img src="/media/{{ requested_user.userprofile.profile_image }}" class="img-fluid img-thumbnail" width="128" height="128" alt="Profile image"  />
-        {% endif %}
         <h3 class="mt-3">{{ name }}</h3>
         <hr>
     </div>
