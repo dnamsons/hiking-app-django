@@ -2,9 +2,11 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User
 from datetime import date
 from .models import UserFollowing, UserProfile
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.views.decorators.csrf import csrf_exempt
+
+from django.core.urlresolvers import reverse
 
 # Create your views here.
 
@@ -76,17 +78,27 @@ def update_profile(request):
     
 @csrf_exempt
 def follow(request, user_id):
+    url = reverse('profile', kwargs={'user_id': user_id})
     requested_user = get_object_or_404(User, id=user_id)
-    current_user = request.user
-    requested_user.userprofile.follower_amount += 1
-    requested_user.userprofile.save()
-    current_user.userprofile.following_amount += 1
-    current_user.userprofile.save()
-    follow_instance = UserFollowing.objects.create(user=current_user, followed_user=requested_user)
-    return profile(request, requested_user.id)
+
+    if(UserFollowing.objects.filter(user = request.user.id, followed_user = user_id).exists()):
+        return HttpResponseRedirect(url)
+    
+    else:
+        current_user = request.user
+        requested_user.userprofile.follower_amount += 1
+        requested_user.userprofile.save()
+        current_user.userprofile.following_amount += 1
+        current_user.userprofile.save()
+        follow_instance = UserFollowing.objects.create(user=current_user, followed_user=requested_user)
+    return HttpResponseRedirect(url)
+
+    
+
     
 @csrf_exempt
 def unfollow(request, user_id):
+    url = reverse('profile', kwargs={'user_id': user_id})
     requested_user = get_object_or_404(User, id=user_id)
     current_user = request.user
     requested_user.userprofile.follower_amount -= 1
@@ -94,5 +106,5 @@ def unfollow(request, user_id):
     current_user.userprofile.following_amount -= 1
     current_user.userprofile.save()
     follow_instance = UserFollowing.objects.filter(user=current_user, followed_user=requested_user).delete()
-    return profile(request, requested_user.id)
+    return HttpResponseRedirect(url)
 
