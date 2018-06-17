@@ -21,7 +21,8 @@
             <h5><button type="submit" class="btn btn-success" name="followbtn">Follow</button> @{{ requested_user.username }} </h5>
         </form>
         {% endif %}
-
+        {% else %}
+        <h5> @{{ requested_user.username }} </h5>
         {% endif %}
     </div>
     <div class="col-md-7">
@@ -146,7 +147,7 @@
             success: function (data) {
                 if(data.data.length == 0)
                 {
-                   modal_body.innerHTML = "This user is currently not following anyone.";
+                   modal_body.innerHTML = "This user is currently not being followed by anyone.";
                 }
 
                 else
