@@ -65,12 +65,16 @@ def update_profile(request):
 
         return render(request, 'user/edit/update_profile.html')
     
-
-def follow(request):
-    form = followform(request.GET.get(followbtn))
-    user.userprofile.following_amount += 1
+@csrf_exempt
+def follow(request, user_id):
+    requested_user = get_object_or_404(User, id=user_id)
+    current_user = request.user
     requested_user.userprofile.follower_amount += 1
-    follow_instance = UserFollowing.objects.create(user=User, followed_user=requested_user)
+    requested_user.userprofile.save()
+    current_user.userprofile.following_amount += 1
+    current_user.userprofile.save()
+    follow_instance = UserFollowing.objects.create(user=current_user, followed_user=requested_user)
+    return profile(request, requested_user.id)
 
 def unfollow(request):
     if(request.GET.get('unfollowbtn')):
