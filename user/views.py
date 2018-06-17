@@ -53,13 +53,15 @@ def update_profile(request):
         if surname != current_user.last_name:
             current_user.last_name = surname
         current_user.save()
-        # TODO: add other edit
-        # if desc != User.userprofile.description:
-        #     User.userprofile.description = desc
-        # if country != UserProfile.country:
-        #     UserProfile.country = country
-        # if city != UserProfile.city:
-        #     UserProfile.city = city
+        if desc != current_user.userprofile.description:
+            current_user.userprofile.description = desc
+        if country != current_user.userprofile.country:
+            current_user.userprofile.country = country
+        if city != current_user.userprofile.city:
+            current_user.userprofile.city = city
+        current_user.userprofile.save()
+        
+        
 
         return render(request, 'user/edit/update_profile.html')
     
