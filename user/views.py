@@ -47,8 +47,13 @@ def update_profile(request):
         desc = request.POST.get('description')
         country = request.POST.get('country')
         city = request.POST.get('city')
-        User.first_name = name
-        User.last_name = surname
+        current_user = request.user
+        if name != current_user.first_name:
+            current_user.first_name = name
+        if surname != current_user.last_name:
+            current_user.last_name = surname
+        current_user.save()
+        # TODO: add other edit
         # if desc != User.userprofile.description:
         #     User.userprofile.description = desc
         # if country != UserProfile.country:
