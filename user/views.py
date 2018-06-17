@@ -1,7 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User
 from datetime import date
-
+from .models import UserFollowing, UserProfile
+from django.http import HttpResponse
+from django.template import loader
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -34,5 +37,37 @@ def edit_profile(request):
         alert_type = 'danger'
         args = {'alert_message': alert_message, 'alert_type': alert_type}
         return render(request, 'alert_page.html', args)
-
     return render(request, 'user/edit_profile.html')
+
+
+def update_profile(request):
+    if request.method == 'POST':
+        user_form = UserForm(request.POST, instance=request.user)
+        profile_form = ProfileForm(request.POST, instance=request.user.profile)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, _('Your profile was successfully updated!'))
+            return redirect('settings:profile')
+        else:
+            messages.error(request, _('Please correct the error below.'))
+    else:
+        user_form = UserForm(instance=request.user)
+        profile_form = ProfileForm(instance=request.user.profile)
+    return render(request, 'profiles/profile.html', {
+        'user_form': user_form,
+        'profile_form': profile_form
+    })
+    
+
+def follow(request):
+    form = followform(request.GET.get(followbtn))
+    user.userprofile.following_amount += 1
+    requested_user.userprofile.follower_amount += 1
+    follow_instance = UserFollowing.objects.create(user=User, followed_user=requested_user)
+
+def unfollow(request):
+    if(request.GET.get('unfollowbtn')):
+        user.userprofile.following_amount -= 1
+        requested_user.userprofile.follower_amount -= 1
+
