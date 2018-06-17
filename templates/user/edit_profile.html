@@ -3,9 +3,43 @@
 {% block title %}Edit profile{% endblock %}
 
 {% block content %}
+
+{% if user.is_authenticated %}
+
 <div class="row">
   <div class="col-12">
     <h1>Iespējams rediģēt profilu</h1>
+    <form method="POST" action="/user/edit/update/" id="editform">
+      First name:<br>
+      <input type="text" name="firstname" value="{{ user.first_name }}"><br>
+      Last name:<br>
+      <input type="text" name="lastname" value="{{ user.last_name }}"><br>
+      Description:<br>
+      <textarea name="description" cols="40" rows="5">{{user.userprofile.description}}</textarea><br>
+      Country:<br>
+      <input type="text" name="country" value="{{ user.userprofile.country }}"><br>
+      City:<br>
+      <input type="text" name="city" value="{{ user.userprofile.city }}"><br>
+      <br>
+      <input type="submit" class="btn" value="Update" name="profile_update_btn" />
+      <input type="reset" class="btn" value="Reset Fields">
+    </form>
+    <br>
+    <form action="">
+      <h2>Change password</h2>
+      Old password:<br>
+      <input type="password" name="oldpsw"><br>
+      New password:<br>
+      <input type="password" name="psw1"><br>
+      Repeat new password:<br>
+      <input type="password" name="psw2"><br>
+      <br>
+      <input type="submit" class="btn" value="Update" name="password_update_btn" />
+    </form>
+    
   </div>
 </div>
+
+{% endif %}
+
 {% endblock %}
