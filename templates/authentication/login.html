@@ -3,6 +3,15 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
+{% if user.is_authenticated %}
+
+  <div class="alert alert-danger" role="alert">
+    <b>You can not log in if you are already logged in!</b><br>
+    Please log out to log in :)<br>
+    You can log out <a href="/logout/">here</a>
+  </div>
+
+{% else %}
 <div class="row">
   <div class="col-12">
     <h2>Login</h2>
@@ -13,4 +22,5 @@
     </form>
   </div>  
 </div>
+{% endif %}
 {% endblock %}

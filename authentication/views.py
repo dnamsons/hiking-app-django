@@ -16,6 +16,12 @@ def validate_username(request):
     return JsonResponse(data)
 
 def signup(request):
+    if request.user.is_anonymous == False:
+        alert_message = 'You must be logged out to sign up!'
+        alert_type = 'danger'
+        args = {'alert_message': alert_message, 'alert_type': alert_type}
+        return render(request, 'alert_page.html', args)
+
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
