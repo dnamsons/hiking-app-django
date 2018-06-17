@@ -10,7 +10,10 @@
   <div class="col-12">
     <h2>Edit profile:</h2>
     <div class="form-group">
-      <form method="POST" action="/user/edit/update/" id="editform">
+      <form method="POST" action="/user/edit/update/" id="editform" enctype="multipart/form-data">
+        {% csrf_token %}
+        Profile image:
+        <input id="id_image" type="file" class="form-control" name="image"><br>
         First name:
         <input type="text" name="firstname" class="form-control" value="{{ user.first_name }}"><br>
         Last name:

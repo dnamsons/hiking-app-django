@@ -7,6 +7,7 @@ from django.template import loader
 from django.views.decorators.csrf import csrf_exempt
 from django.core.urlresolvers import reverse
 from django.http import JsonResponse
+from user.forms import ImageUploadForm
 
 # Create your views here.
 
@@ -58,6 +59,10 @@ def update_profile(request):
         country = request.POST.get('country')
         city = request.POST.get('city')
         current_user = request.user
+        form = ImageUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            current_user.userprofile.profile_image = form.cleaned_data['image']
+            current_user.userprofile.save()
         if name != current_user.first_name:
             current_user.first_name = name
         if surname != current_user.last_name:
