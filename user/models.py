@@ -15,6 +15,8 @@ class UserProfile(models.Model): # Piesaistits originalajam user
     country = models.CharField(max_length=50, default='', blank=True)
     city = models.CharField(max_length=50, default='', blank=True)
     profile_image = models.ImageField(upload_to=get_image_path, blank=True, null=True, default='images/no_image.jpg') # izmanto pip install Pillow
+    follower_amount = models.IntegerField(default=0)
+    following_amount = models.IntegerField(default=0)
     
     def __str__(self): # Svarigi nodefinet, lai nebutu "UserProfile object" bet "lietotajs_profile"
         return self.user.username + '_profile'
@@ -29,6 +31,6 @@ post_save.connect(create_profile, sender=User)
 
 class UserFollowing(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='%(class)s_user_that_is_following')
-    followed_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='%(class)s_user_that_is_beign_followed')
+    followed_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='%(class)s_user_that_is_being_followed')
     def __str__(self):
         return self.user.username + '_follows_' + self.followed_user.username
