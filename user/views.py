@@ -39,25 +39,24 @@ def edit_profile(request):
         return render(request, 'alert_page.html', args)
     return render(request, 'user/edit_profile.html')
 
-
+@csrf_exempt
 def update_profile(request):
     if request.method == 'POST':
-        user_form = UserForm(request.POST, instance=request.user)
-        profile_form = ProfileForm(request.POST, instance=request.user.profile)
-        if user_form.is_valid() and profile_form.is_valid():
-            user_form.save()
-            profile_form.save()
-            messages.success(request, _('Your profile was successfully updated!'))
-            return redirect('settings:profile')
-        else:
-            messages.error(request, _('Please correct the error below.'))
-    else:
-        user_form = UserForm(instance=request.user)
-        profile_form = ProfileForm(instance=request.user.profile)
-    return render(request, 'profiles/profile.html', {
-        'user_form': user_form,
-        'profile_form': profile_form
-    })
+        name = request.POST.get('firstname')
+        surname = request.POST.get('lastname')
+        desc = request.POST.get('description')
+        country = request.POST.get('country')
+        city = request.POST.get('city')
+        User.first_name = name
+        User.last_name = surname
+        # if desc != User.userprofile.description:
+        #     User.userprofile.description = desc
+        # if country != UserProfile.country:
+        #     UserProfile.country = country
+        # if city != UserProfile.city:
+        #     UserProfile.city = city
+
+        return render(request, 'user/edit/update_profile.html')
     
 
 def follow(request):
