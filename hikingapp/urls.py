@@ -21,6 +21,7 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.views.generic.base import TemplateView
 from authentication import views as authentication_views
+from user import views as user_views
 
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='home.html'), name='home'),
@@ -34,6 +35,8 @@ urlpatterns = [
     url(r'^map/', include('map.urls')),
 
     url(r'^ajax/validate_username/$', authentication_views.validate_username, name='validate_username'),
+    url(r'^ajax/get_followers/$', user_views.get_followers, name='get_followers'),
+    url(r'^ajax/get_followings/$', user_views.get_followings, name='get_followings'),
     url(r'^admin/', admin.site.urls),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

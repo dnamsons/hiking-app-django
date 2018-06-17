@@ -37,6 +37,10 @@ body
     border-bottom: .3rem #064b34 solid;
 }
 
+.follower-thumbnail
+{
+    border: 0.2rem #064b34 solid;
+}
 
 
 /* Custom bootstrap adjustments */

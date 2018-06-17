@@ -26,8 +26,8 @@
     </div>
     <div class="col-md-7">
         <div class="btn-group d-flex" role="group">
-            <button type="button" class="btn btn-success w-100">Following: {{ requested_user.userprofile.following_amount }}</button>
-            <button type="button" class="btn btn-success w-100">Followers: {{ requested_user.userprofile.follower_amount }}</button>
+            <button type="button" class="btn btn-success w-100" data-toggle="modal" data-target="#followingModal" id="following_modal_button">Following: {{ requested_user.userprofile.following_amount }}</button>
+            <button type="button" class="btn btn-success w-100" data-toggle="modal" data-target="#followersModal" id="followers_modal_button">Followers: {{ requested_user.userprofile.follower_amount }}</button>
             <div class="btn-group w-100" role="group">
                 <button id="btnGroupDrop1" type="button" class="btn btn-success dropdown-toggle w-100" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Profile
@@ -57,4 +57,108 @@
         <p>My first post here</p>
     </div> 
 </div>
+
+<div class="modal fade" id="followingModal" tabindex="-1" role="dialog" aria-labelledby="followingModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="followingModalLabel">{{ requested_user.username }} is following</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body" id="following_modal_body">
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="followersModal" tabindex="-1" role="dialog" aria-labelledby="followersModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="followersModalLabel">{{ requested_user.username }} followers</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="followers_modal_body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+    $(document).ready(function() {
+        $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+    });
+
+    $("#following_modal_button").click(function() 
+    {
+        var modal_body = document.getElementById("following_modal_body");
+        var user_id = '{{ requested_user.id }}';
+        modal_body.innerHTML = "";
+        $.ajax({
+            url: '/ajax/get_followings/',
+            data: {
+                'requested_user_id': user_id
+            },
+            dataType: 'json',
+            success: function (data) {
+                if(data.data.length == 0)
+                {
+                   modal_body.innerHTML = "This user is currently not following anyone.";
+                }
+
+                else
+                {
+                    for(var object in data.data)
+                    {
+                        modal_body.innerHTML += "<a href=\"/user/" + data.data[object].user_id + "/\"><img src=\"" + data.data[object].picture + "\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\""+ data.data[object].username + "\" class=\"follower-thumbnail m-1\" width=\"96\" height=\"96\"></a>";
+                    }
+                }
+                
+            }
+        });
+
+    });
+
+    $("#followers_modal_button").click(function() 
+    {
+        var modal_body = document.getElementById("followers_modal_body");
+        var user_id = '{{ requested_user.id }}';
+        modal_body.innerHTML = "";
+        $.ajax({
+            url: '/ajax/get_followers/',
+            data: {
+                'requested_user_id': user_id
+            },
+            dataType: 'json',
+            success: function (data) {
+                if(data.data.length == 0)
+                {
+                   modal_body.innerHTML = "This user is currently not following anyone.";
+                }
+
+                else
+                {
+                    for(var object in data.data)
+                    {
+                        modal_body.innerHTML += "<a href=\"/user/" + data.data[object].user_id + "/\"><img src=\"" + data.data[object].picture + "\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\""+ data.data[object].username + "\" class=\"m-1 follower-thumbnail\" width=\"96\" height=\"96\"></a>";
+                    }
+                }
+                
+            }
+        });
+    });
+</script>
 {% endblock %}

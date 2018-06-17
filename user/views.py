@@ -5,8 +5,8 @@ from .models import UserFollowing, UserProfile
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.views.decorators.csrf import csrf_exempt
-
 from django.core.urlresolvers import reverse
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -104,3 +104,41 @@ def unfollow(request, user_id):
     follow_instance = UserFollowing.objects.filter(user=current_user, followed_user=requested_user).delete()
     return HttpResponseRedirect(url)
 
+def get_followers(request):
+    requested_user_id = request.GET.get('requested_user_id', None)
+    followers = UserFollowing.objects.filter(followed_user = requested_user_id)
+    data = []
+    for follower in followers:
+        if(follower.user.userprofile.profile_image):
+            img_path = follower.user.userprofile.profile_image.url
+        else:
+            img_path = "/media/images/no_image.jpg"
+
+        lieta = {
+            'user_id': follower.user.id,
+            'username': follower.user.username,
+            'picture': img_path
+        }
+        data.append(lieta)
+
+    return JsonResponse({'user_id': requested_user_id, 'data': list(data)})
+
+def get_followings(request):
+    requested_user_id = request.GET.get('requested_user_id', None)
+    followings = UserFollowing.objects.filter(user = requested_user_id)
+
+    data = []
+    for following in followings:
+        if(following.followed_user.userprofile.profile_image):
+            img_path = following.followed_user.userprofile.profile_image.url
+        else:
+            img_path = "/media/images/no_image.jpg"
+
+        lieta = {
+            'user_id': following.followed_user.id,
+            'username': following.followed_user.username,
+            'picture': img_path
+        }
+        data.append(lieta)
+
+    return JsonResponse({'user_id': requested_user_id, 'data': list(data)})
