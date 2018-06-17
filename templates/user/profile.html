@@ -4,57 +4,55 @@
 
 {% block content %}
 
-<div class="content border border-light rounded">
-    <div class="profile-hero rounded-top" style="background-image: url('/static/images/default_profile_header.jpg');"></div>
-    <div class="row pt-3 pl-3 pr-3">
-        <div class="col-md-5 text-center">
-            <img src="/media/{{ requested_user.userprofile.profile_image }}" class="rounded-circle profile-image img-fluid" alt="Profile image"  />
-            <h3 class="mt-3">{{ name }}</h3>
-            {% if user.id != requested_user.id %}
-            {% if followed %}
-            <form method="POST" action="unfollow/" id="unfollowform">
-                <h5><button type="submit" class="btn btn-success" name="followbtn">Unfollow</button> @{{ requested_user.username }} </h5>
-            </form>
-            {% else %}
-            <form method="POST" action="follow/" id="followform">
-                <h5><button type="submit" class="btn btn-success" name="followbtn">Follow</button> @{{ requested_user.username }} </h5>
-            </form>
-            {% endif %}
+<div class="profile-hero rounded-top" style="background-image: url('/static/images/default_profile_header.jpg');"></div>
+<div class="row pt-3 pl-3 pr-3">
+    <div class="col-md-5 text-center">
+        <img src="/media/{{ requested_user.userprofile.profile_image }}" class="rounded-circle profile-image img-fluid" alt="Profile image"  />
+        <h3 class="mt-3">{{ name }}</h3>
+        {% if user.id != requested_user.id %}
+        {% if followed %}
+        <form method="POST" action="unfollow/" id="unfollowform">
+            <h5><button type="submit" class="btn btn-success" name="followbtn">Unfollow</button> @{{ requested_user.username }} </h5>
+        </form>
+        {% else %}
+        <form method="POST" action="follow/" id="followform">
+            <h5><button type="submit" class="btn btn-success" name="followbtn">Follow</button> @{{ requested_user.username }} </h5>
+        </form>
+        {% endif %}
 
-            {% endif %}
-        </div>
-        <div class="col-md-7">
-            <div class="btn-group d-flex" role="group">
-                <button type="button" class="btn btn-success w-100">Following: {{ requested_user.userprofile.following_amount }}</button>
-                <button type="button" class="btn btn-success w-100">Followers: {{ requested_user.userprofile.follower_amount }}</button>
-                <div class="btn-group w-100" role="group">
-                    <button id="btnGroupDrop1" type="button" class="btn btn-success dropdown-toggle w-100" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Profile
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
-                        {% if user.id != requested_user.id %}
-                        <a class="dropdown-item" href="#">Message</a>
-                        <a class="dropdown-item" href="#">Report</a>
-                        {% elif user.id == requested_user.id %}
-                        <a class="dropdown-item" href="{% url 'edit_profile' %}">Edit profile</a>
-                        {% endif %}
-                    </div>
+        {% endif %}
+    </div>
+    <div class="col-md-7">
+        <div class="btn-group d-flex" role="group">
+            <button type="button" class="btn btn-success w-100">Following: {{ requested_user.userprofile.following_amount }}</button>
+            <button type="button" class="btn btn-success w-100">Followers: {{ requested_user.userprofile.follower_amount }}</button>
+            <div class="btn-group w-100" role="group">
+                <button id="btnGroupDrop1" type="button" class="btn btn-success dropdown-toggle w-100" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Profile
+                </button>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
+                    {% if user.id != requested_user.id %}
+                    <a class="dropdown-item" href="#">Message</a>
+                    <a class="dropdown-item" href="#">Report</a>
+                    {% elif user.id == requested_user.id %}
+                    <a class="dropdown-item" href="{% url 'edit_profile' %}">Edit profile</a>
+                    {% endif %}
                 </div>
             </div>
-            <p class="pt-3">
-                <i>{% if requested_user.userprofile.description != '' %} {{ requested_user.userprofile.description }}<br> {% endif %}</i>
-                {% if age != None %} {{ age }} years old<br>{% endif %}
-                {% if requested_user.userprofile.country != '' and requested_user.userprofile.city != '' %} From: {{ requested_user.userprofile.city }}, {{ requested_user.userprofile.country }} <br> 
-                {% elif requested_user.userprofile.country %} {{ requested_user.userprofile.country }}<br>{% endif %}
-            </p>
         </div>
+        <p class="pt-3">
+            <i>{% if requested_user.userprofile.description != '' %} {{ requested_user.userprofile.description }}<br> {% endif %}</i>
+            {% if age != None %} {{ age }} years old<br>{% endif %}
+            {% if requested_user.userprofile.country != '' and requested_user.userprofile.city != '' %} From: {{ requested_user.userprofile.city }}, {{ requested_user.userprofile.country }} <br> 
+            {% elif requested_user.userprofile.country %} {{ requested_user.userprofile.country }}<br>{% endif %}
+        </p>
     </div>
-    <div class="col-12"><hr></div>
-    <div class="row p-1 justify-content-center align-self-center">
-        <div class="col-md-9">
-            <h4>Posts:</h4>
-            <p>My first post here</p>
-        </div> 
-    </div>
+</div>
+<div class="col-12"><hr></div>
+<div class="row p-1 justify-content-center align-self-center">
+    <div class="col-md-9">
+        <h4>Posts:</h4>
+        <p>My first post here</p>
+    </div> 
 </div>
 {% endblock %}
