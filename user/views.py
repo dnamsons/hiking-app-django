@@ -50,7 +50,6 @@ def edit_profile(request):
 
 # FIXME: redirect to profile/id, shouldn't stay on profile/id/follow or unfollow, as you can't unfollow/follow straight after
 
-@csrf_exempt
 def update_profile(request):
     if request.method == 'POST':
         name = request.POST.get('firstname')
@@ -76,7 +75,6 @@ def update_profile(request):
 
         return render(request, 'user/edit/update_profile.html')
     
-@csrf_exempt
 def follow(request, user_id):
     url = reverse('profile', kwargs={'user_id': user_id})
     requested_user = get_object_or_404(User, id=user_id)
@@ -95,8 +93,6 @@ def follow(request, user_id):
 
     
 
-    
-@csrf_exempt
 def unfollow(request, user_id):
     url = reverse('profile', kwargs={'user_id': user_id})
     requested_user = get_object_or_404(User, id=user_id)
