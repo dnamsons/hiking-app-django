@@ -49,8 +49,6 @@ def edit_profile(request):
         return render(request, 'alert_page.html', args)
     return render(request, 'user/edit_profile.html')
 
-# FIXME: redirect to profile/id, shouldn't stay on profile/id/follow or unfollow, as you can't unfollow/follow straight after
-
 def update_profile(request):
     if request.method == 'POST':
         name = request.POST.get('firstname')
@@ -61,6 +59,8 @@ def update_profile(request):
         current_user = request.user
         form = ImageUploadForm(request.POST, request.FILES)
         if form.is_valid():
+            if current_user.userprofile.profile_image != 'images/no_image.jpg':
+                current_user.userprofile.profile_image.delete()
             current_user.userprofile.profile_image = form.cleaned_data['image']
             current_user.userprofile.save()
         if name != current_user.first_name:
