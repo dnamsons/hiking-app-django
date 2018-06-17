@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Map{% endblock %}
+
+{% block head %}
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
+{% endblock %}
+
+{% block content %}
+
+<div id='map' width="100%" style="height:400px"></div>
+
+<button class="btn btn-block btn-success mt-2" data-toggle="collapse" data-target="#map_options">View map options</button>
+
+<div id="map_options" class="collapse">
+        <form>
+            <input type="checkbox" name="map_option" value="routes"> Show routes<br>
+            <input type="checkbox" name="map_option" value="places" checked> Show places<br>
+        </form>
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+    const height = (0.7 * $( window ).height()) - $('header').height();//-$('footer').height();
+    $('#map').height(height);
+
+    mapboxgl.accessToken = '{{ mapbox_access_token }}';
+    var map = new mapboxgl.Map
+    ({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/outdoors-v10'
+    });
+</script>
+
+{% endblock %}

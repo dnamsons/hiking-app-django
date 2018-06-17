@@ -31,6 +31,7 @@ urlpatterns = [
 
     url(r'^user/', include('user.urls')),
     url(r'^search/', include('search.urls')),
+    url(r'^map/', include('map.urls')),
 
     url(r'^ajax/validate_username/$', authentication_views.validate_username, name='validate_username'),
     url(r'^admin/', admin.site.urls),

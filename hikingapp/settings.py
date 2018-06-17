@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'authentication',
     'user',
     'search',
+    'map',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -137,3 +138,5 @@ MEDIA_URL = '/media/'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoiamtsdXNpcyIsImEiOiJjamh3aHFobDAwMTY1M3JvenpmMWRiOW5nIn0.jxcIi7ISq__tbgmtGbPWpA'
