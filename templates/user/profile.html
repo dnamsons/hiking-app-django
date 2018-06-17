@@ -10,7 +10,18 @@
         <div class="col-md-5 text-center">
             <img src="/media/{{ requested_user.userprofile.profile_image }}" class="rounded-circle profile-image img-fluid" alt="Profile image"  />
             <h3 class="mt-3">{{ name }}</h3>
-            <h5>{% if user.id != requested_user.id %}<button type="button" class="btn btn-success">Follow</button>{% endif %} @{{ requested_user.username }} </h5>
+            {% if user.id != requested_user.id %}
+            {% if followed %}
+            <form method="POST" action="unfollow/" id="unfollowform">
+                <h5><button type="submit" class="btn btn-success" name="followbtn">Unfollow</button> @{{ requested_user.username }} </h5>
+            </form>
+            {% else %}
+            <form method="POST" action="follow/" id="followform">
+                <h5><button type="submit" class="btn btn-success" name="followbtn">Follow</button> @{{ requested_user.username }} </h5>
+            </form>
+            {% endif %}
+
+            {% endif %}
         </div>
         <div class="col-md-7">
             <div class="btn-group d-flex" role="group">
@@ -25,7 +36,7 @@
                         <a class="dropdown-item" href="#">Message</a>
                         <a class="dropdown-item" href="#">Report</a>
                         {% elif user.id == requested_user.id %}
-                        <a class="dropdown-item" href="#">Edit profile</a>
+                        <a class="dropdown-item" href="{% url 'edit_profile' %}">Edit profile</a>
                         {% endif %}
                     </div>
                 </div>
@@ -33,7 +44,7 @@
             <p class="pt-3">
                 <i>{% if requested_user.userprofile.description != '' %} {{ requested_user.userprofile.description }}<br> {% endif %}</i>
                 {% if age != None %} {{ age }} years old<br>{% endif %}
-                {% if requested_user.userprofile.country != '' and requested_user.userprofile.city != '' %} From: {{ requested_user.userprofile.country }}, {{ requested_user.userprofile.city }}<br> 
+                {% if requested_user.userprofile.country != '' and requested_user.userprofile.city != '' %} From: {{ requested_user.userprofile.city }}, {{ requested_user.userprofile.country }} <br> 
                 {% elif requested_user.userprofile.country %} {{ requested_user.userprofile.country }}<br>{% endif %}
             </p>
         </div>

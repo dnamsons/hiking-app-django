@@ -14,6 +14,13 @@ def calculate_age(born):
 
 def profile(request, user_id):
     requested_user = get_object_or_404(User, id=user_id) # Checks if requested user exists
+    current_user = request.user
+    followed = False
+    if current_user != requested_user:
+        if UserFollowing.objects.filter(user = current_user, followed_user = requested_user).exists():
+            followed = True
+            
+
 
     if requested_user.first_name != '':
         if requested_user.last_name != '':
@@ -28,7 +35,7 @@ def profile(request, user_id):
     else:
         age = None
 
-    args = {'requested_user': requested_user, 'name': name, 'age': age}
+    args = {'requested_user': requested_user, 'name': name, 'age': age, 'followed': followed}
     return render(request, 'user/profile.html', args)
 
 def edit_profile(request):
@@ -38,6 +45,8 @@ def edit_profile(request):
         args = {'alert_message': alert_message, 'alert_type': alert_type}
         return render(request, 'alert_page.html', args)
     return render(request, 'user/edit_profile.html')
+
+# FIXME: redirect to profile/id, shouldn't stay on profile/id/follow or unfollow, as you can't unfollow/follow straight after
 
 @csrf_exempt
 def update_profile(request):
@@ -51,7 +60,7 @@ def update_profile(request):
         if name != current_user.first_name:
             current_user.first_name = name
         if surname != current_user.last_name:
-            current_user.last_name = surname
+            current_user.last_name = surname 
         current_user.save()
         if desc != current_user.userprofile.description:
             current_user.userprofile.description = desc
@@ -75,9 +84,15 @@ def follow(request, user_id):
     current_user.userprofile.save()
     follow_instance = UserFollowing.objects.create(user=current_user, followed_user=requested_user)
     return profile(request, requested_user.id)
-
-def unfollow(request):
-    if(request.GET.get('unfollowbtn')):
-        user.userprofile.following_amount -= 1
-        requested_user.userprofile.follower_amount -= 1
+    
+@csrf_exempt
+def unfollow(request, user_id):
+    requested_user = get_object_or_404(User, id=user_id)
+    current_user = request.user
+    requested_user.userprofile.follower_amount -= 1
+    requested_user.userprofile.save()
+    current_user.userprofile.following_amount -= 1
+    current_user.userprofile.save()
+    follow_instance = UserFollowing.objects.filter(user=current_user, followed_user=requested_user).delete()
+    return profile(request, requested_user.id)
 
