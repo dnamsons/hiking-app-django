@@ -22,9 +22,10 @@ from django.contrib.auth import views as auth_views
 from django.views.generic.base import TemplateView
 from authentication import views as authentication_views
 from user import views as user_views
+from hikingapp import views as base_views
 
 urlpatterns = [
-    url(r'^$', TemplateView.as_view(template_name='home.html'), name='home'),
+    url(r'^$', base_views.home, name='home'),
 
     url(r'^signup/$', authentication_views.signup, name='signup'),
     url(r'^login/$', auth_views.login, {'template_name': 'authentication/login.html'}, name='login'),

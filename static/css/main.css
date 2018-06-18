@@ -43,6 +43,7 @@ body
 }
 
 
+
 /* Custom bootstrap adjustments */
 
 .navbar 
@@ -81,4 +82,9 @@ body
 .fa-arrow-down:hover
 {
     color: darkred
+}
+
+.media
+{
+    border-bottom: 1px #064b3452 solid;
 }

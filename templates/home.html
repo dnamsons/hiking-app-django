@@ -8,25 +8,28 @@
 
   {% if user.is_authenticated %}
     <h2>Welcome back, {{ user.username }}!</h2>
-    <p>Varbūt var labajā pusē uzšaut kaut kādu column ar papildus info</p>
-    <p>Lietotājs ielogojas atpakaļ, ir feeds(foreach)</p>
+    <h4>Here are the most recent posts:</h4>
     <ul class="list-unstyled">
-      <li class="media mb-3">
-        <img class="align-self-center mr-3" src="http://www.downvids.net/video/bestimages/img-a-funny-joke-for-you-yoda-has-490.jpg" width="64" height="64" alt="Generic placeholder image">
-          <div class="media-body">
-            <h5 class="mt-0">Funny Joke</h5>
-            Bardzo smutny dzień. Wielki smutny dzień dzisiaj tak. Mārtiņš jest w Ameryce i nie odpowiada.
-        </div>
+      {% if args.post_count != 0 %}
+      {% for p in args.post_list %}
+      <li class="media mt-3 p-3">
+              <img class="mr-3 rounded-circle follower-thumbnail" src="/media/{{ p.post_author.userprofile.profile_image }}" alt="{{ u.username}}" width="64" height="64">
+              <div class="media-body">
+                 <h5 class="mt-0">{{ p.post_author }}{% if p.post_author.id == user.id %} <a href="">Edit post</a> {%endif%}</h5>
+                  {{ p.post }}<br>
+                  {{ p.like_amount }}
+                  <i class="fas fa-arrow-up"></i>
+                  <i class="fas fa-arrow-down"></i>
+                  
+              </div>
       </li>
-      
-      <li class="media mb-3">
-        <img class="align-self-center mr-3" src="http://www.downvids.net/video/bestimages/img-a-funny-joke-for-you-yoda-has-490.jpg" width="64" height="64" alt="Generic placeholder image">
-          <div class="media-body">
-            <h5 class="mt-0">Funny Joke</h5>
-            Bardzo smutny dzień. Wielki smutny dzień dzisiaj tak. Mārtiņš jest w Ameryce i nie odpowiada.
-        </div>
-      </li>
+      {% endfor %}
+      {% else %}
+      <p>There are no posts to show</p>
+      {% endif %}
     </ul>
+
+    {{ args }}
 
   {% else %}
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">

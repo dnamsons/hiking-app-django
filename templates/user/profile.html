@@ -57,8 +57,8 @@
         <h4>Posts:</h4>
         {% if post_list != None %}
         {% for p in post_list %}
-        <li class="media mt-3">
-                <img class="mr-3" src="/media/{{ p.post_author.userprofile.profile_image }}" alt="{{ u.username}}" width="64" height="64">
+        <li class="media mt-3 p-3">
+                <img class="mr-3 rounded-circle follower-thumbnail" src="/media/{{ p.post_author.userprofile.profile_image }}" alt="{{ u.username}}" width="64" height="64">
                 <div class="media-body">
                    <h5 class="mt-0">{{ p.post_author }}{% if p.post_author.id == user.id %} <a href="">Edit post</a> {%endif%}</h5>
                     {{ p.post }}<br>
