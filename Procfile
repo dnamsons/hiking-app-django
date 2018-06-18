@@ -1,0 +1,1 @@
+web: gunicorn hiking-app.wsgi --log-file -
