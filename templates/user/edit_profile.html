@@ -46,7 +46,8 @@
             </button>
           </div>
           <div class="modal-body">
-              <form action="">
+              <form method="POST" action="">
+                  {% csrf_token %}
                 Old password:
                 <input type="password" class="form-control" name="oldpsw"><br>
                 New password:

@@ -8,6 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core.urlresolvers import reverse
 from django.http import JsonResponse
 from user.forms import ImageUploadForm
+from posts.views import render_own_posts, render_other_posts
 
 # Create your views here.
 
@@ -20,9 +21,11 @@ def profile(request, user_id):
     current_user = request.user
     followed = False
     if current_user != requested_user:
+        post_list = render_other_posts(request, requested_user)
         if UserFollowing.objects.filter(user = current_user, followed_user = requested_user).exists():
             followed = True
-            
+    else:
+        post_list = render_own_posts(request)
 
 
     if requested_user.first_name != '':
@@ -37,8 +40,10 @@ def profile(request, user_id):
         age = calculate_age(requested_user.userprofile.birthdate)
     else:
         age = None
+    
+    
 
-    args = {'requested_user': requested_user, 'name': name, 'age': age, 'followed': followed}
+    args = {'requested_user': requested_user, 'name': name, 'age': age, 'followed': followed, 'post_list': post_list,}
     return render(request, 'user/profile.html', args)
 
 def edit_profile(request):

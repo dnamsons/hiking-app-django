@@ -70,3 +70,15 @@ body
 {
     font-weight: bold;
 }
+
+
+.fa-arrow-up:hover 
+{
+    color: darkgreen
+}
+
+
+.fa-arrow-down:hover
+{
+    color: darkred
+}

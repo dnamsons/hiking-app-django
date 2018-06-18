@@ -25,3 +25,18 @@ def make_post(request):
         else:
             UserPost.objects.create(post_author = current_user, post = post_contents)
     return HttpResponseRedirect(url)
+
+
+def render_own_posts(request):
+    current_user = request.user
+    post_query = UserPost.objects.filter(post_author = current_user)
+    if not post_query:
+        return None
+    return post_query
+
+def render_other_posts(request, requested_user):
+    post_query = UserPost.objects.filter(post_author = requested_user)
+    if not post_query:
+        return None
+    return post_query
+

@@ -55,7 +55,21 @@
 <div class="row p-1 justify-content-center align-self-center">
     <div class="col-md-9">
         <h4>Posts:</h4>
+        {% if post_list != None %}
+        {% for p in post_list %}
+        <li class="media mt-3">
+                <img class="mr-3" src="/media/{{ p.post_author.userprofile.profile_image }}" alt="{{ u.username}}" width="64" height="64">
+                <div class="media-body">
+                   <h5 class="mt-0">{{ p.post_author }}</h5>
+                    {{ p.post }}<br>
+                    <i class="fas fa-arrow-up"></i>
+                    <i class="fas fa-arrow-down"></i>
+                </div>
+        </li>
+        {% endfor %}
+        {% else %}
         <p>My first post here</p>
+        {% endif %}
     </div> 
 </div>
 
