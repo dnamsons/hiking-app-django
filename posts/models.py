@@ -1,4 +1,10 @@
 from django.db import models
+from django.contrib.auth.models import User
+import os
+
+
+def get_image_path(instance, filename):
+    return os.path.join('posts', str(instance.id), filename) #/media/user/<userid>/joke.png
 
 # Create your models here.
 class UserPost(models.Model):

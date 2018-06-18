@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'user',
     'search',
     'map',
+    'posts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
