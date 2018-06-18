@@ -15,12 +15,18 @@ class UserPost(models.Model):
     like_amount = models.IntegerField(default=0)
     comment_amount = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
+    def __str__(self): # Svarigi nodefinet, lai nebutu "UserProfile object" bet "lietotajs_profile"
+        return str(self.post_id) + "_posted_by_" + self.post_author.username
 
 class UserComment(models.Model):
     post_id = models.ForeignKey(UserPost, on_delete=models.CASCADE, related_name='%(class)s_author')
     comment_author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='%(class)s_author')
     comment = models.CharField(max_length=200, default='', blank=True)
+    def __str__(self):
+        return str(self.post_id) + "_commented_by_" + self.comment_author.username
 
 class UserLike(models.Model):
     post_id = models.ForeignKey(UserPost, on_delete=models.CASCADE, related_name='%(class)s_author')
     like_author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='%(class)s_author')
+    def __str__(self):
+        return str(self.post_id) + "_liked_by_" + self.like_author.username
