@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+from posts.models import UserPost
 
 
 # Create your views here. 
@@ -9,7 +10,6 @@ def search(request):
 
     if query != None and query != '':
         users = User.objects.filter(username__contains = query)
-        # Velak pec si pasa principa pievienosim komentarus, routes utt.
         args = {'query': query, 'users': users}
     
     else:

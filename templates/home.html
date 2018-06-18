@@ -24,53 +24,52 @@
               </div>
       </li>
       {% endfor %}
+      <p class="text-muted small text-center">End of posts</p>
       {% else %}
       <p>There are no posts to show</p>
       {% endif %}
     </ul>
 
-    {{ args }}
-
   {% else %}
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div id="carousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          <li data-target="#carousel" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel" data-slide-to="1"></li>
+          <li data-target="#carousel" data-slide-to="2"></li>
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block w-100 rounded-top" src="http://via.placeholder.com/800x400" alt="First slide">
+            <img class="d-block w-100 rounded-top" src="/static/images/slider-1.jpeg" alt="First slide">
             <div class="carousel-caption d-none d-md-block">
-              <h5>BEST APP EVER</h5>
-              <p>Only from 500$ per hour</p>
+              <h5>A Social Network</h5>
+              <p>Connect with others</p>
             </div>
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100 rounded-top" src="http://via.placeholder.com/800x400" alt="Second slide">
+            <img class="d-block w-100 rounded-top" src="/static/images/slider-2.jpeg" alt="Second slide">
             <div class="carousel-caption d-none d-md-block">
-              <h5>You will totally enjoy this</h5>
-              <p>(Probably)</p>
+              <h5>Find routes in map</h5>
+              <p>(in the future)</p>
             </div>
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100 rounded-top" src="http://via.placeholder.com/800x400" alt="Third slide">
+            <img class="d-block w-100 rounded-top" src="/static/images/slider-3.jpeg" alt="Third slide">
             <div class="carousel-caption d-none d-md-block">
-              <h5>Darya pls 10 yes</h5>
-              <p>We work hard</p>
+              <h5>Sign up today!</h5>
+              <p>It will be worth your while</p>
             </div>
           </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </a>
       </div>
-      <h2>Welcome to HIKEFY</h2>
+      <h3 class="text-center mt-4">Welcome to the HikingApp</h3>
   {% endif %}
   </div>
 </div>
