@@ -8,4 +8,5 @@ from posts import views as post_view
 urlpatterns = [
     url(r'^new/$', post_view.create_post, name='newpost'),
      url(r'^new/make_post/$', post_view.make_post, name='makepost'),
+    url(r'^edit_post/$', post_view.edit_post, name='editpost')
 ] 
