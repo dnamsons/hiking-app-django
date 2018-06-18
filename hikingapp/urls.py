@@ -22,6 +22,7 @@ from django.contrib.auth import views as auth_views
 from django.views.generic.base import TemplateView
 from authentication import views as authentication_views
 from user import views as user_views
+from posts import views as post_views
 from hikingapp import views as base_views
 
 urlpatterns = [
@@ -39,6 +40,8 @@ urlpatterns = [
     url(r'^ajax/validate_username/$', authentication_views.validate_username, name='validate_username'),
     url(r'^ajax/get_followers/$', user_views.get_followers, name='get_followers'),
     url(r'^ajax/get_followings/$', user_views.get_followings, name='get_followings'),
+    url(r'^ajax/modify_like/$', post_views.modify_like, name='modify_like'),
+    
     url(r'^admin/', admin.site.urls),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

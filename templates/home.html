@@ -18,9 +18,10 @@
                 <img src="/media/{{ p.image }}" alt="{{ u.username}}" width="128" height="128">
                  <h5 class="mt-0">{{ p.post_author }}{% if p.post_author.id == user.id %} <a href="post/edit_post/">Edit post</a> {%endif%}</h5>
                   {{ p.post }}<br>
-                  {{ p.like_amount }}
-                  <i class="fas fa-arrow-up"></i>
-                  <i class="fas fa-arrow-down"></i>
+                  <div class="like_amount_count" id="{{ p.post_id }}" style="display: inline;">{{ p.like_amount }}</div>
+                  <i class="fas fa-arrow-up" onclick="modify_like('plus')"></i>
+                  <i class="fas fa-arrow-down" onclick="modify_like('minus')"></i>
+      
                   
               </div>
       </li>
@@ -74,4 +75,32 @@
   {% endif %}
   </div>
 </div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+function modify_like(type)
+{
+    var object = event.target;
+    var like_amount = object.parentElement.getElementsByClassName("like_amount_count")[0];
+
+    var user_id = '{{ request.user.id }}';
+    var post_id = like_amount.id;
+
+
+    $.ajax({
+        url: '/ajax/modify_like/',
+        data: {
+            'user_id': user_id,
+            'post_id': post_id,
+            'request_type': type
+        },
+        dataType: 'json',
+        success: function (data) {
+            console.log(data);
+            like_amount.innerHTML = data.like_count;
+        }
+    });
+}
+</script>
 {% endblock %}

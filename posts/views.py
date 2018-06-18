@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import UserComment, UserLike, UserPost
 from user.forms import ImageUploadForm
+from django.http import JsonResponse
+from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 
 # Create your views here.
@@ -53,3 +55,35 @@ def render_other_posts(request, requested_user):
         return None
     return post_query
 
+def modify_like(request):
+    request_type = request.GET.get('request_type', None)
+    user_id = request.GET.get('user_id', None)
+    post_id = request.GET.get('post_id', None)
+
+    response = 'bad'
+
+    if(request_type == None or user_id == None or post_id == None):
+         return JsonResponse({'response': response})
+
+    user = User.objects.get(id=user_id)
+    post = UserPost.objects.filter(post_id=post_id).first()
+    like_count = post.like_amount
+    user_like = UserLike.objects.filter(post_id=post_id, like_author=user_id)
+
+    if(request_type == 'minus'):
+        if user_like:
+            post.like_amount = post.like_amount - 1
+            post.save()
+            user_like.delete()
+            response = 'okminus' + str(post.like_amount)
+        else:
+            response = 'minus_bad_doesnt_exist'
+    else:
+        if not user_like:
+            post.like_amount = post.like_amount + 1
+            post.save()
+            UserLike.objects.create(post_id=post, like_author=user)
+            response = 'okplus' + str(post.like_amount)
+        else:
+            response = 'plus_bad_exists'
+    return JsonResponse({'response': response, 'like_count': post.like_amount})
