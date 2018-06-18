@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
+from .models import UserComment, UserLike, UserPost
+from user.forms import ImageUploadForm
+from django.core.urlresolvers import reverse
 
 # Create your views here.
 
@@ -12,6 +15,7 @@ def create_post(request):
     return render(request, 'posts/newpost.html')
 
 def make_post(request):
+    url = reverse('home')
     if request.method == 'POST':
         current_user = request.user
         post_contents = request.POST.get('post_content')
@@ -20,4 +24,4 @@ def make_post(request):
             UserPost.objects.create(post_author = current_user, post = post_contents, image = form.cleaned_data['image'])
         else:
             UserPost.objects.create(post_author = current_user, post = post_contents)
-    return HttpResponseRedirect('home')
+    return HttpResponseRedirect(url)

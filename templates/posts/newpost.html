@@ -7,7 +7,7 @@
 {% if user.is_authenticated %}
 
 <div class="form-group">
-    <form method="POST" action="" id="postform" enctype="multipart/form-data">
+    <form method="POST" action="make_post/" id="postform" enctype="multipart/form-data">
         {% csrf_token %}
         Post image:
         <input id="id_image" type="file" class="form-control" name="postimage"><br>
