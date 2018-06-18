@@ -4,10 +4,11 @@ from django.db import models
 class UserPost(models.Model):
     post_id = models.AutoField(primary_key=True)
     post_author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='%(class)s_author')
-    image = models.ImageField(upload_to=get_image_path, blank=True, null=True, default='images/no_image.jpg')
-    post = models.CharField(max_length=300, default='', blank=True)
+    image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
+    post = models.CharField(max_length=500, default='', blank=True)
     like_amount = models.IntegerField(default=0)
     comment_amount = models.IntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 class UserComment(models.Model):
     post_id = models.ForeignKey(UserPost, on_delete=models.CASCADE, related_name='%(class)s_author')

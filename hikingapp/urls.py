@@ -33,6 +33,7 @@ urlpatterns = [
     url(r'^user/', include('user.urls')),
     url(r'^search/', include('search.urls')),
     url(r'^map/', include('map.urls')),
+    url(r'^post/', include('posts.urls')),
 
     url(r'^ajax/validate_username/$', authentication_views.validate_username, name='validate_username'),
     url(r'^ajax/get_followers/$', user_views.get_followers, name='get_followers'),
