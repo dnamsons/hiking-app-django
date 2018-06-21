@@ -1,0 +1,172 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-06-21 14:04+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: templates/authentication/login.html:4 templates/authentication/login.html:18
+#: templates/authentication/login.html:22 templates/base.html:75
+msgid "login"
+msgstr "Login"
+
+#: templates/authentication/login.html:10
+#: templates/authentication/login.html:12
+msgid "youcannotloginif"
+msgstr "You can not log in if you are already logged in!"
+
+#: templates/authentication/login.html:11
+msgid "pleaselogouttologin"
+msgstr "Please log out to log in"
+
+#: templates/authentication/login.html:12
+#, fuzzy
+#| msgid "logout"
+msgid "youcanlogout"
+msgstr "You can log out"
+
+#: templates/authentication/signup.html:22
+msgid "username"
+msgstr "Username"
+
+#: templates/authentication/signup.html:22
+msgid "is already taken"
+msgstr "is already taken"
+
+#: templates/authentication/signup.html:41
+#: templates/authentication/signup.html:47 templates/base.html:76
+msgid "signup"
+msgstr "Sign up"
+
+#: templates/base.html:34
+msgid "home"
+msgstr "Home"
+
+#: templates/base.html:35
+msgid "map"
+msgstr "Map"
+
+#: templates/base.html:38
+msgid "search"
+msgstr "Search"
+
+#: templates/base.html:41
+msgid "language"
+msgstr "Language"
+
+#: templates/base.html:57
+msgid "changelanguage"
+msgstr "Change language"
+
+#: templates/base.html:64
+msgid "profile"
+msgstr "Profile"
+
+#: templates/base.html:66
+msgid "signedinas"
+msgstr "Signed in as"
+
+#: templates/base.html:67
+msgid "newpost"
+msgstr "New post"
+
+#: templates/base.html:68
+msgid "viewprofile"
+msgstr "View profile"
+
+#: templates/base.html:69
+msgid "editprofile"
+msgstr "Edit profile"
+
+#: templates/base.html:71
+msgid "logout"
+msgstr "Log out"
+
+#: templates/base.html:93
+msgid "allrightsreserved"
+msgstr "All rights reserved"
+
+#: templates/base.html:93
+msgid "madeby"
+msgstr "Made by Dāvis Namsons (dn17005) and Jānis Kristaps Lūsis (jl17030)"
+
+#: templates/home.html:4
+#, fuzzy
+#| msgid "home"
+msgid "homepage"
+msgstr "Homepage"
+
+#: templates/home.html:11
+msgid "welcomeback"
+msgstr "Welcome back"
+
+#: templates/home.html:12
+msgid "herearethemostrecentposts"
+msgstr "Here are the most recent posts"
+
+#: templates/home.html:20
+#, fuzzy
+#| msgid "newpost"
+msgid "editpost"
+msgstr "New post"
+
+#: templates/home.html:30
+msgid "endofposts"
+msgstr "End of posts"
+
+#: templates/home.html:32
+#, fuzzy
+#| msgid "newpost"
+msgid "noposts"
+msgstr "No posts have been made"
+
+#: templates/home.html:47
+msgid "slide1header"
+msgstr "A Social Network"
+
+#: templates/home.html:48
+msgid "slide1text"
+msgstr "Connect with others"
+
+#: templates/home.html:54
+msgid "slide2header"
+msgstr "Find routes in map"
+
+#: templates/home.html:55
+msgid "slide2text"
+msgstr "(in the future)"
+
+#: templates/home.html:61
+msgid "slide3header"
+msgstr "Sign up today!"
+
+#: templates/home.html:62
+msgid "slide3text"
+msgstr "It will be worth your while"
+
+#: templates/home.html:68
+msgid "previous"
+msgstr "Previous"
+
+#: templates/home.html:72
+msgid "next"
+msgstr "Next"
+
+#: templates/home.html:75
+msgid "welcometothe"
+msgstr "Welcome to the"
+
+#~ msgid "here"
+#~ msgstr "here"

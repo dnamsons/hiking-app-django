@@ -1,24 +1,25 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Login{% endblock %}
+{% block title %}{% trans "login" %}{% endblock %}
 
 {% block content %}
 {% if user.is_authenticated %}
 
   <div class="alert alert-danger" role="alert">
-    <b>You can not log in if you are already logged in!</b><br>
-    Please log out to log in :)<br>
-    You can log out <a href="/logout/">here</a>
+    <b>{% trans "youcannotloginif" %}</b><br>
+    {% trans "pleaselogouttologin" %} :)<br>
+    {% trans "youcanlogout" %} <a href="/logout/">{% trans "youcannotloginif" %}</a>
   </div>
 
 {% else %}
 <div class="row">
   <div class="col-12">
-    <h2>Login</h2>
+    <h2>{% trans "login" %}</h2>
     <form method="post" novalidate>
       {% csrf_token %}
       {% include 'includes/bs4_form.html' with form=form %}
-      <button type="submit" class="btn btn-primary">Login</button>
+      <button type="submit" class="btn btn-primary">{% trans "login" %}</button>
     </form>
   </div>  
 </div>

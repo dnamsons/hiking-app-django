@@ -1,0 +1,174 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-06-21 14:04+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
+
+#: templates/authentication/login.html:4 templates/authentication/login.html:18
+#: templates/authentication/login.html:22 templates/base.html:75
+msgid "login"
+msgstr "Pieslēgties"
+
+#: templates/authentication/login.html:10
+#: templates/authentication/login.html:12
+msgid "youcannotloginif"
+msgstr "Jūs nevarat atslēgties, ja esat jau pieslēdzies(usies)!"
+
+#: templates/authentication/login.html:11
+msgid "pleaselogouttologin"
+msgstr "Lūdzu atslēdzieties, lai pieslēgtos!"
+
+#: templates/authentication/login.html:12
+#, fuzzy
+#| msgid "logout"
+msgid "youcanlogout"
+msgstr "Jūs varat atslēgties"
+
+#: templates/authentication/signup.html:22
+msgid "username"
+msgstr "Lietotāja vārds"
+
+#: templates/authentication/signup.html:22
+msgid "is already taken"
+msgstr "ir jau aizņemts"
+
+#: templates/authentication/signup.html:41
+#: templates/authentication/signup.html:47 templates/base.html:76
+msgid "signup"
+msgstr "Reģistrēties"
+
+#: templates/base.html:34
+msgid "home"
+msgstr "Sākumlapa"
+
+#: templates/base.html:35
+msgid "map"
+msgstr "Karte"
+
+#: templates/base.html:38
+msgid "search"
+msgstr "Meklēt"
+
+#: templates/base.html:41
+msgid "language"
+msgstr "Valodas izvēlne"
+
+#: templates/base.html:57
+msgid "changelanguage"
+msgstr "Mainīt valodu"
+
+#: templates/base.html:64
+msgid "profile"
+msgstr "Profils"
+
+#: templates/base.html:66
+msgid "signedinas"
+msgstr "Pieslēdzies kā"
+
+#: templates/base.html:67
+msgid "newpost"
+msgstr "Jauns ieraksts"
+
+#: templates/base.html:68
+msgid "viewprofile"
+msgstr "Apskatīt profilu"
+
+#: templates/base.html:69
+msgid "editprofile"
+msgstr "Veikt izmaiņas profilā"
+
+#: templates/base.html:71
+msgid "logout"
+msgstr "Atslēgties"
+
+#: templates/base.html:93
+msgid "allrightsreserved"
+msgstr "Visas tiesības paturētas"
+
+#: templates/base.html:93
+msgid "madeby"
+msgstr "Lapu veidoja Dāvis Namsons (dn17005) un Jānis Kristaps Lūsis (jl17030)"
+
+#: templates/home.html:4
+#, fuzzy
+#| msgid "home"
+msgid "homepage"
+msgstr "Sākumlapa"
+
+#: templates/home.html:11
+msgid "welcomeback"
+msgstr "Laipni lūdzam atpakaļ"
+
+#: templates/home.html:12
+msgid "herearethemostrecentposts"
+msgstr "Jaunākie ieraksti"
+
+#: templates/home.html:20
+#, fuzzy
+#| msgid "newpost"
+msgid "editpost"
+msgstr "Veikt izmaiņas ierakstā"
+
+#: templates/home.html:30
+msgid "endofposts"
+msgstr "Ierakstu beigas"
+
+#: templates/home.html:32
+#, fuzzy
+#| msgid "newpost"
+msgid "noposts"
+msgstr "Nav ierakstu"
+
+#: templates/home.html:47
+msgid "slide1header"
+msgstr "Sociālais tīkls"
+
+#: templates/home.html:48
+msgid "slide1text"
+msgstr "Savienojies ar citiem"
+
+#: templates/home.html:54
+msgid "slide2header"
+msgstr "Atrodi ceļus kartē"
+
+#: templates/home.html:55
+msgid "slide2text"
+msgstr "(nākotnē)"
+
+#: templates/home.html:61
+msgid "slide3header"
+msgstr "Reģistrējies šodien!"
+
+#: templates/home.html:62
+msgid "slide3text"
+msgstr "Tas būs Tava laika vērts"
+
+#: templates/home.html:68
+msgid "previous"
+msgstr "Iepriekšējais"
+
+#: templates/home.html:72
+msgid "next"
+msgstr "Nākamais"
+
+#: templates/home.html:75
+msgid "welcometothe"
+msgstr "Laipni lūdzam"
+
+#~ msgid "here"
+#~ msgstr "šeit"

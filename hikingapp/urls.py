@@ -42,6 +42,8 @@ urlpatterns = [
     url(r'^ajax/get_followings/$', user_views.get_followings, name='get_followings'),
     url(r'^ajax/modify_like/$', post_views.modify_like, name='modify_like'),
     
+    url(r'^i18n/', include('django.conf.urls.i18n')),
+    
     url(r'^admin/', admin.site.urls),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

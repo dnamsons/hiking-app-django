@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block javascript %}
 <script>
@@ -37,13 +38,13 @@
 {% block content %}
 <div class="row">
   <div class="col-12">
-    <h2>Sign up</h2>
+    <h2>{% trans "signup" %}</h2>
     <div class="alert alert-warning" role="alert" id="alerts" style="display: none;">
     </div>
     <form method="post" novalidate>
       {% csrf_token %}
       {% include 'includes/bs4_form.html' with form=form %}
-      <button type="submit" class="btn btn-primary">Sign up</button>
+      <button type="submit" class="btn btn-primary">{% trans "signup" %}</button>
     </form>
   </div>
 </div>

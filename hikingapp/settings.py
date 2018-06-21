@@ -53,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'hikingapp.urls'
@@ -113,7 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
@@ -139,5 +140,19 @@ MEDIA_URL = '/media/'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
+
+LOCALE_PATHS = [
+    os.path.join(PROJECT_PATH, '../locale'),
+]
+
+LANGUAGES = [
+    ('en', 'English'),
+    ('lv', 'Latvian'),
+]
+
+LANGUAGE_CODE = 'en-us' 'lv' 
+
 
 MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoiamtsdXNpcyIsImEiOiJjamh3aHFobDAwMTY1M3JvenpmMWRiOW5nIn0.jxcIi7ISq__tbgmtGbPWpA'
