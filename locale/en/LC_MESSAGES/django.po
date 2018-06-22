@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-22 17:49+0000\n"
+"POT-Creation-Date: 2018-06-22 20:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: templates/alert_page.html:4
+msgid "Whoops"
+msgstr ""
 
 #: templates/authentication/login.html:4 templates/authentication/login.html:18
 #: templates/authentication/login.html:22 templates/base.html:75
@@ -79,7 +83,7 @@ msgstr "New post"
 msgid "viewprofile"
 msgstr "View profile"
 
-#: templates/base.html:69
+#: templates/base.html:69 templates/user/profile.html:42
 msgid "editprofile"
 msgstr "Edit profile"
 
@@ -108,6 +112,7 @@ msgid "herearethemostrecentposts"
 msgstr "Here are the most recent posts"
 
 #: templates/home.html:20 templates/posts/editpost.html:4
+#: templates/user/profile.html:65
 msgid "editpost"
 msgstr "New post"
 
@@ -207,6 +212,120 @@ msgstr ""
 
 #: templates/search/search.html:34
 msgid "No users found by username"
+msgstr ""
+
+#: templates/user/edit/update_profile.html:6
+msgid "Success"
+msgstr ""
+
+#: templates/user/edit_profile.html:3 templates/user/edit_profile.html:11
+#, fuzzy
+#| msgid "editprofile"
+msgid "Edit profile"
+msgstr "Edit profile"
+
+#: templates/user/edit_profile.html:17
+#, fuzzy
+#| msgid "profile"
+msgid "Profile image"
+msgstr "Profile"
+
+#: templates/user/edit_profile.html:19
+msgid "First name"
+msgstr ""
+
+#: templates/user/edit_profile.html:21
+msgid "Last name"
+msgstr ""
+
+#: templates/user/edit_profile.html:23
+msgid "Description"
+msgstr ""
+
+#: templates/user/edit_profile.html:25
+msgid "Country"
+msgstr ""
+
+#: templates/user/edit_profile.html:27
+msgid "City"
+msgstr ""
+
+#: templates/user/edit_profile.html:33 templates/user/edit_profile.html:35
+#: templates/user/edit_profile.html:43
+msgid "Change password"
+msgstr ""
+
+#: templates/user/edit_profile.html:51
+msgid "Old password"
+msgstr ""
+
+#: templates/user/edit_profile.html:53
+msgid "New password"
+msgstr ""
+
+#: templates/user/edit_profile.html:55
+msgid "Repeat new password"
+msgstr ""
+
+#: templates/user/edit_profile.html:59 templates/user/profile.html:92
+#: templates/user/profile.html:111
+msgid "Close"
+msgstr ""
+
+#: templates/user/profile.html:17
+msgid "Unfollow"
+msgstr ""
+
+#: templates/user/profile.html:22
+msgid "Follow"
+msgstr ""
+
+#: templates/user/profile.html:31
+msgid "Following"
+msgstr ""
+
+#: templates/user/profile.html:32
+msgid "Followers"
+msgstr ""
+
+#: templates/user/profile.html:35
+#, fuzzy
+#| msgid "profile"
+msgid "Profile"
+msgstr "Profile"
+
+#: templates/user/profile.html:39
+msgid "Message"
+msgstr ""
+
+#: templates/user/profile.html:40
+msgid "Report"
+msgstr ""
+
+#: templates/user/profile.html:49
+msgid "years old"
+msgstr ""
+
+#: templates/user/profile.html:50
+msgid "From"
+msgstr ""
+
+#: templates/user/profile.html:58
+#, fuzzy
+#| msgid "noposts"
+msgid "Posts"
+msgstr "No posts have been made"
+
+#: templates/user/profile.html:75
+msgid "User has not posted anything yet"
+msgstr ""
+
+#: templates/user/profile.html:84
+msgid "is following"
+msgstr ""
+
+#: templates/user/profile.html:103
+msgid "followers"
 msgstr ""
 
 #~ msgid "username"

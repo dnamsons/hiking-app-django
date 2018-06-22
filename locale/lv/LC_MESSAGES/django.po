@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-22 17:49+0000\n"
+"POT-Creation-Date: 2018-06-22 20:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
+
+#: templates/alert_page.html:4
+msgid "Whoops"
+msgstr "Ak vai"
 
 #: templates/authentication/login.html:4 templates/authentication/login.html:18
 #: templates/authentication/login.html:22 templates/base.html:75
@@ -81,7 +85,7 @@ msgstr "Jauns ieraksts"
 msgid "viewprofile"
 msgstr "Apskatīt profilu"
 
-#: templates/base.html:69
+#: templates/base.html:69 templates/user/profile.html:42
 msgid "editprofile"
 msgstr "Veikt izmaiņas profilā"
 
@@ -110,6 +114,7 @@ msgid "herearethemostrecentposts"
 msgstr "Jaunākie ieraksti"
 
 #: templates/home.html:20 templates/posts/editpost.html:4
+#: templates/user/profile.html:65
 msgid "editpost"
 msgstr "Veikt izmaiņas ierakstā"
 
@@ -210,6 +215,118 @@ msgstr "Lietotāji"
 #: templates/search/search.html:34
 msgid "No users found by username"
 msgstr "Neviens lietotājs netika atrasts ar lietotājvārdu"
+
+#: templates/user/edit/update_profile.html:6
+msgid "Success"
+msgstr "Izdevās"
+
+#: templates/user/edit_profile.html:3 templates/user/edit_profile.html:11
+#, fuzzy
+#| msgid "editprofile"
+msgid "Edit profile"
+msgstr "Veikt izmaiņas profilā"
+
+#: templates/user/edit_profile.html:17
+#, fuzzy
+#| msgid "profile"
+msgid "Profile image"
+msgstr "Profils"
+
+#: templates/user/edit_profile.html:19
+msgid "First name"
+msgstr "Vārds"
+
+#: templates/user/edit_profile.html:21
+msgid "Last name"
+msgstr "Uzvārds"
+
+#: templates/user/edit_profile.html:23
+msgid "Description"
+msgstr "Apraksts"
+
+#: templates/user/edit_profile.html:25
+msgid "Country"
+msgstr "Valsts"
+
+#: templates/user/edit_profile.html:27
+msgid "City"
+msgstr "Pilsēta"
+
+#: templates/user/edit_profile.html:33 templates/user/edit_profile.html:35
+#: templates/user/edit_profile.html:43
+msgid "Change password"
+msgstr "Nomainīt paroli"
+
+#: templates/user/edit_profile.html:51
+msgid "Old password"
+msgstr "Vecā parole"
+
+#: templates/user/edit_profile.html:53
+msgid "New password"
+msgstr "Jaunā parole"
+
+#: templates/user/edit_profile.html:55
+msgid "Repeat new password"
+msgstr "Jaunā parole atkārtoti"
+
+#: templates/user/edit_profile.html:59 templates/user/profile.html:92
+#: templates/user/profile.html:111
+msgid "Close"
+msgstr "Aizvērt"
+
+#: templates/user/profile.html:17
+msgid "Unfollow"
+msgstr "Atsekot"
+
+#: templates/user/profile.html:22
+msgid "Follow"
+msgstr "Sekot"
+
+#: templates/user/profile.html:31
+msgid "Following"
+msgstr "Seko"
+
+#: templates/user/profile.html:32
+msgid "Followers"
+msgstr "Sekotāji"
+
+#: templates/user/profile.html:35
+msgid "Profile"
+msgstr "Profils"
+
+#: templates/user/profile.html:39
+msgid "Message"
+msgstr "Nosūtīt ziņu"
+
+#: templates/user/profile.html:40
+msgid "Report"
+msgstr "Ziņot"
+
+#: templates/user/profile.html:49
+msgid "years old"
+msgstr "gadus vecs/a"
+
+#: templates/user/profile.html:50
+msgid "From"
+msgstr "No"
+
+#: templates/user/profile.html:58
+#, fuzzy
+#| msgid "noposts"
+msgid "Posts"
+msgstr "Nav ierakstu"
+
+#: templates/user/profile.html:75
+msgid "User has not posted anything yet"
+msgstr "Lietotājs vēl nav veicis ierakstus"
+
+#: templates/user/profile.html:84
+msgid "is following"
+msgstr "seko"
+
+#: templates/user/profile.html:103
+msgid "followers"
+msgstr "sekotāji"
 
 #~ msgid "username"
 #~ msgstr "Lietotāja vārds"

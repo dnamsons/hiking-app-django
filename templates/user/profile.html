@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block title %}{{ requested_user.username }}{% endblock %}
 
@@ -13,12 +14,12 @@
         {% if followed %}
         <form method="POST" action="unfollow/" id="unfollowform">
             {% csrf_token %}
-            <h5><button type="submit" class="btn btn-success" name="followbtn">Unfollow</button> @{{ requested_user.username }} </h5>
+            <h5><button type="submit" class="btn btn-success" name="followbtn">{% trans "Unfollow" %}</button> @{{ requested_user.username }} </h5>
         </form>
         {% else %}
         <form method="POST" action="follow/" id="followform">
             {% csrf_token %}
-            <h5><button type="submit" class="btn btn-success" name="followbtn">Follow</button> @{{ requested_user.username }} </h5>
+            <h5><button type="submit" class="btn btn-success" name="followbtn">{% trans "Follow" %}</button> @{{ requested_user.username }} </h5>
         </form>
         {% endif %}
         {% else %}
@@ -27,26 +28,26 @@
     </div>
     <div class="col-md-7">
         <div class="btn-group d-flex" role="group">
-            <button type="button" class="btn btn-success w-100" data-toggle="modal" data-target="#followingModal" id="following_modal_button">Following: {{ requested_user.userprofile.following_amount }}</button>
-            <button type="button" class="btn btn-success w-100" data-toggle="modal" data-target="#followersModal" id="followers_modal_button">Followers: {{ requested_user.userprofile.follower_amount }}</button>
+            <button type="button" class="btn btn-success w-100" data-toggle="modal" data-target="#followingModal" id="following_modal_button">{% trans "Following" %}: {{ requested_user.userprofile.following_amount }}</button>
+            <button type="button" class="btn btn-success w-100" data-toggle="modal" data-target="#followersModal" id="followers_modal_button">{% trans "Followers" %}: {{ requested_user.userprofile.follower_amount }}</button>
             <div class="btn-group w-100" role="group">
                 <button id="btnGroupDrop1" type="button" class="btn btn-success dropdown-toggle w-100" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Profile
+                    {% trans "Profile" %}
                 </button>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
                     {% if user.id != requested_user.id %}
-                    <a class="dropdown-item" href="#">Message</a>
-                    <a class="dropdown-item" href="#">Report</a>
+                    <a class="dropdown-item" href="#">{% trans "Message" %}</a>
+                    <a class="dropdown-item" href="#">{% trans "Report" %}</a>
                     {% elif user.id == requested_user.id %}
-                    <a class="dropdown-item" href="{% url 'edit_profile' %}">Edit profile</a>
+                    <a class="dropdown-item" href="{% url 'edit_profile' %}">{% trans "editprofile" %}</a>
                     {% endif %}
                 </div>
             </div>
         </div>
         <p class="pt-3">
             <i>{% if requested_user.userprofile.description != '' %} {{ requested_user.userprofile.description }}<br> {% endif %}</i>
-            {% if age != None %} {{ age }} years old<br>{% endif %}
-            {% if requested_user.userprofile.country != '' and requested_user.userprofile.city != '' %} From: {{ requested_user.userprofile.city }}, {{ requested_user.userprofile.country }} <br> 
+            {% if age != None %} {{ age }} {% trans "years old" %}<br>{% endif %}
+            {% if requested_user.userprofile.country != '' and requested_user.userprofile.city != '' %} {% trans "From" %}: {{ requested_user.userprofile.city }}, {{ requested_user.userprofile.country }} <br> 
             {% elif requested_user.userprofile.country %} {{ requested_user.userprofile.country }}<br>{% endif %}
         </p>
     </div>
@@ -54,14 +55,14 @@
 <div class="col-12"><hr></div>
 <div class="row p-1 justify-content-center align-self-center">
     <div class="col-md-9">
-        <h4>Posts:</h4>
+        <h4>{% trans "Posts" %}:</h4>
         {% if post_list != None %}
         {% for p in post_list %}
         <li class="media mt-3 p-3">
                 <img class="mr-3 rounded-circle follower-thumbnail" src="/media/{{ p.post_author.userprofile.profile_image }}" alt="{{ u.username}}" width="64" height="64">
                 <div class="media-body">
                         <img src="/media/{{ p.image }}" alt="{{ u.username}}" width="128" height="128">
-                   <h5 class="mt-0">{{ p.post_author }}{% if p.post_author.id == user.id %} <a href="">Edit post</a> {%endif%}</h5>
+                   <h5 class="mt-0">{{ p.post_author }}{% if p.post_author.id == user.id %} <a href="">{% trans "editpost" %}</a> {%endif%}</h5>
                     {{ p.post }}<br>
                     <div class="like_amount_count" id="{{ p.post_id }}" style="display: inline;">{{ p.like_amount }}</div>
                     <i class="fas fa-arrow-up" onclick="modify_like('plus')"></i>
@@ -71,7 +72,7 @@
         </li>
         {% endfor %}
         {% else %}
-        <p>User has not posted anything yet.</p>
+        <p>{% trans "User has not posted anything yet" %}.</p>
         {% endif %}
     </div> 
 </div>
@@ -80,7 +81,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="followingModalLabel">{{ requested_user.username }} is following</h5>
+            <h5 class="modal-title" id="followingModalLabel">{{ requested_user.username }} {% trans "is following" %}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -88,7 +89,7 @@
         <div class="modal-body" id="following_modal_body">
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-success" data-dismiss="modal">{% trans "Close" %}</button>
         </div>
         </div>
     </div>
@@ -99,7 +100,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="followersModalLabel">{{ requested_user.username }} followers</h5>
+                <h5 class="modal-title" id="followersModalLabel">{{ requested_user.username }} {% trans "followers" %}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -107,7 +108,7 @@
             <div class="modal-body" id="followers_modal_body">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal">{% trans "Close" %}</button>
             </div>
             </div>
         </div>

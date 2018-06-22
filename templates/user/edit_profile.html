@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Edit profile{% endblock %}
+{% block title %}{% trans "Edit profile" %}{% endblock %}
 
 {% block content %}
 
@@ -8,31 +8,31 @@
 
 <div class="row">
   <div class="col-12">
-    <h2>Edit profile:</h2>
+    <h2>{% trans "Edit profile" %}:</h2>
     <div class="form-group">
       <form method="POST" action="/user/edit/update/" id="editform" enctype="multipart/form-data">
         {% csrf_token %}
         <img src="/media/{{ user.userprofile.profile_image }}" class="rounded-circle profile-image" alt="Profile image"  />
         <h2 class="text-center mt-2">{{ user.username }}</h2>
-        Profile image:
+        {% trans "Profile image" %}:
         <input id="id_image" type="file" class="form-control" name="image"><br>
-        First name:
+        {% trans "First name" %}:
         <input type="text" name="firstname" class="form-control" value="{{ user.first_name }}"><br>
-        Last name:
+        {% trans "Last name" %}:
         <input type="text" name="lastname" class="form-control" value="{{ user.last_name }}"><br>
-        Description:
+        {% trans "Description" %}:
         <textarea name="description" class="form-control" cols="40" rows="5">{{user.userprofile.description}}</textarea><br>
-        Country:
+        {% trans "Country" %}:
         <input type="text" name="country" class="form-control" value="{{ user.userprofile.country }}"><br>
-        City:
+        {% trans "City" %}:
         <input type="text" name="city" class="form-control" value="{{ user.userprofile.city }}"><br>
         <input type="submit" class="btn btn-success" value="Update" name="profile_update_btn" />
         <input type="reset" class="btn btn-success" value="Reset Fields">
       </form>
     </div>
-    <h3>Change password:</h3>
+    <h3>{% trans "Change password" %}:</h3>
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#changePassword">
-      Change password
+      {% trans "Change password" %}
     </button>
 
     <!-- Modal -->
@@ -40,7 +40,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="changePasswordLabel">Change password</h5>
+            <h5 class="modal-title" id="changePasswordLabel">{% trans "Change password" %}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -48,15 +48,15 @@
           <div class="modal-body">
               <form method="POST" action="">
                   {% csrf_token %}
-                Old password:
+                  {% trans "Old password" %}:
                 <input type="password" class="form-control" name="oldpsw"><br>
-                New password:
+                {% trans "New password" %}:
                 <input type="password" class="form-control" name="psw1"><br>
-                Repeat new password:
+                {% trans "Repeat new password" %}:
                 <input type="password" class="form-control" name="psw2"><br>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Close" %}</button>
             <input type="submit" class="btn btn-success" value="Update" name="password_update_btn" />
             </form>
           </div>
