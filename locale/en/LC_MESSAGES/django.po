@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-21 14:04+0000\n"
+"POT-Creation-Date: 2018-06-22 17:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,6 @@ msgid "login"
 msgstr "Login"
 
 #: templates/authentication/login.html:10
-#: templates/authentication/login.html:12
 msgid "youcannotloginif"
 msgstr "You can not log in if you are already logged in!"
 
@@ -32,18 +31,12 @@ msgid "pleaselogouttologin"
 msgstr "Please log out to log in"
 
 #: templates/authentication/login.html:12
-#, fuzzy
-#| msgid "logout"
 msgid "youcanlogout"
 msgstr "You can log out"
 
-#: templates/authentication/signup.html:22
-msgid "username"
-msgstr "Username"
-
-#: templates/authentication/signup.html:22
-msgid "is already taken"
-msgstr "is already taken"
+#: templates/authentication/login.html:12
+msgid "here"
+msgstr "here"
 
 #: templates/authentication/signup.html:41
 #: templates/authentication/signup.html:47 templates/base.html:76
@@ -54,7 +47,7 @@ msgstr "Sign up"
 msgid "home"
 msgstr "Home"
 
-#: templates/base.html:35
+#: templates/base.html:35 templates/map/index.html:4
 msgid "map"
 msgstr "Map"
 
@@ -78,7 +71,7 @@ msgstr "Profile"
 msgid "signedinas"
 msgstr "Signed in as"
 
-#: templates/base.html:67
+#: templates/base.html:67 templates/posts/newpost.html:4
 msgid "newpost"
 msgstr "New post"
 
@@ -103,8 +96,6 @@ msgid "madeby"
 msgstr "Made by Dāvis Namsons (dn17005) and Jānis Kristaps Lūsis (jl17030)"
 
 #: templates/home.html:4
-#, fuzzy
-#| msgid "home"
 msgid "homepage"
 msgstr "Homepage"
 
@@ -116,9 +107,7 @@ msgstr "Welcome back"
 msgid "herearethemostrecentposts"
 msgstr "Here are the most recent posts"
 
-#: templates/home.html:20
-#, fuzzy
-#| msgid "newpost"
+#: templates/home.html:20 templates/posts/editpost.html:4
 msgid "editpost"
 msgstr "New post"
 
@@ -127,8 +116,6 @@ msgid "endofposts"
 msgstr "End of posts"
 
 #: templates/home.html:32
-#, fuzzy
-#| msgid "newpost"
 msgid "noposts"
 msgstr "No posts have been made"
 
@@ -168,5 +155,62 @@ msgstr "Next"
 msgid "welcometothe"
 msgstr "Welcome to the"
 
-#~ msgid "here"
-#~ msgstr "here"
+#: templates/map/index.html:15
+msgid "View map options"
+msgstr "View map options"
+
+#: templates/map/index.html:19
+msgid "Show routes"
+msgstr "Show routes"
+
+#: templates/map/index.html:20
+msgid "Show locations"
+msgstr "Show locations"
+
+#: templates/posts/editpost.html:13 templates/posts/newpost.html:13
+msgid "postimage"
+msgstr "Post image"
+
+#: templates/posts/editpost.html:15 templates/posts/newpost.html:15
+msgid "post"
+msgstr "Post"
+
+#: templates/posts/editpost.html:17
+msgid "edit"
+msgstr "Edit"
+
+#: templates/posts/editpost.html:19
+msgid "Delete post"
+msgstr "Delete post"
+
+#: templates/posts/newpost.html:17
+msgid "submit"
+msgstr "Submit"
+
+#: templates/search/search.html:6
+msgid "Search results for"
+msgstr ""
+
+#: templates/search/search.html:6 templates/search/search.html:11
+#, fuzzy
+#| msgid "search"
+msgid "Search"
+msgstr "Search"
+
+#: templates/search/search.html:9
+msgid "searchplaceholder"
+msgstr "For example Nuts"
+
+#: templates/search/search.html:18
+msgid "Users"
+msgstr ""
+
+#: templates/search/search.html:34
+msgid "No users found by username"
+msgstr ""
+
+#~ msgid "username"
+#~ msgstr "Username"
+
+#~ msgid "is already taken"
+#~ msgstr "is already taken"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-21 14:04+0000\n"
+"POT-Creation-Date: 2018-06-22 17:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,6 @@ msgid "login"
 msgstr "Pieslēgties"
 
 #: templates/authentication/login.html:10
-#: templates/authentication/login.html:12
 msgid "youcannotloginif"
 msgstr "Jūs nevarat atslēgties, ja esat jau pieslēdzies(usies)!"
 
@@ -34,18 +33,12 @@ msgid "pleaselogouttologin"
 msgstr "Lūdzu atslēdzieties, lai pieslēgtos!"
 
 #: templates/authentication/login.html:12
-#, fuzzy
-#| msgid "logout"
 msgid "youcanlogout"
 msgstr "Jūs varat atslēgties"
 
-#: templates/authentication/signup.html:22
-msgid "username"
-msgstr "Lietotāja vārds"
-
-#: templates/authentication/signup.html:22
-msgid "is already taken"
-msgstr "ir jau aizņemts"
+#: templates/authentication/login.html:12
+msgid "here"
+msgstr "šeit"
 
 #: templates/authentication/signup.html:41
 #: templates/authentication/signup.html:47 templates/base.html:76
@@ -56,7 +49,7 @@ msgstr "Reģistrēties"
 msgid "home"
 msgstr "Sākumlapa"
 
-#: templates/base.html:35
+#: templates/base.html:35 templates/map/index.html:4
 msgid "map"
 msgstr "Karte"
 
@@ -80,7 +73,7 @@ msgstr "Profils"
 msgid "signedinas"
 msgstr "Pieslēdzies kā"
 
-#: templates/base.html:67
+#: templates/base.html:67 templates/posts/newpost.html:4
 msgid "newpost"
 msgstr "Jauns ieraksts"
 
@@ -105,8 +98,6 @@ msgid "madeby"
 msgstr "Lapu veidoja Dāvis Namsons (dn17005) un Jānis Kristaps Lūsis (jl17030)"
 
 #: templates/home.html:4
-#, fuzzy
-#| msgid "home"
 msgid "homepage"
 msgstr "Sākumlapa"
 
@@ -118,9 +109,7 @@ msgstr "Laipni lūdzam atpakaļ"
 msgid "herearethemostrecentposts"
 msgstr "Jaunākie ieraksti"
 
-#: templates/home.html:20
-#, fuzzy
-#| msgid "newpost"
+#: templates/home.html:20 templates/posts/editpost.html:4
 msgid "editpost"
 msgstr "Veikt izmaiņas ierakstā"
 
@@ -129,8 +118,6 @@ msgid "endofposts"
 msgstr "Ierakstu beigas"
 
 #: templates/home.html:32
-#, fuzzy
-#| msgid "newpost"
 msgid "noposts"
 msgstr "Nav ierakstu"
 
@@ -170,5 +157,62 @@ msgstr "Nākamais"
 msgid "welcometothe"
 msgstr "Laipni lūdzam"
 
-#~ msgid "here"
-#~ msgstr "šeit"
+#: templates/map/index.html:15
+msgid "View map options"
+msgstr "Parādīt kartes izvēlnes iespējas"
+
+#: templates/map/index.html:19
+msgid "Show routes"
+msgstr "Parādīt ceļus"
+
+#: templates/map/index.html:20
+msgid "Show locations"
+msgstr "Parādīt apskates vietas"
+
+#: templates/posts/editpost.html:13 templates/posts/newpost.html:13
+msgid "postimage"
+msgstr "Ieraksta bilde"
+
+#: templates/posts/editpost.html:15 templates/posts/newpost.html:15
+msgid "post"
+msgstr "Ieraksts"
+
+#: templates/posts/editpost.html:17
+msgid "edit"
+msgstr "Veikt izmaiņas"
+
+#: templates/posts/editpost.html:19
+msgid "Delete post"
+msgstr "Izdzēst ierakstu"
+
+#: templates/posts/newpost.html:17
+msgid "submit"
+msgstr "Veikt ierakstu"
+
+#: templates/search/search.html:6
+msgid "Search results for"
+msgstr "Meklēšanas rezultāti atslēgvārdiem"
+
+#: templates/search/search.html:6 templates/search/search.html:11
+#, fuzzy
+#| msgid "search"
+msgid "Search"
+msgstr "Meklēt"
+
+#: templates/search/search.html:9
+msgid "searchplaceholder"
+msgstr "Piemēram, Rieksti"
+
+#: templates/search/search.html:18
+msgid "Users"
+msgstr "Lietotāji"
+
+#: templates/search/search.html:34
+msgid "No users found by username"
+msgstr "Neviens lietotājs netika atrasts ar lietotājvārdu"
+
+#~ msgid "username"
+#~ msgstr "Lietotāja vārds"
+
+#~ msgid "is already taken"
+#~ msgstr "ir jau aizņemts"

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Edit post{% endblock %}
+{% block title %}{% trans "editpost" %}{% endblock %}
 
 {% block content %}
 
@@ -9,13 +10,13 @@
 <div class="form-group">
     <form method="POST" action="make_post/" id="postform" enctype="multipart/form-data">
         {% csrf_token %}
-        Post image:
+        {% trans "postimage" %}:
         <input id="id_image" type="file" class="form-control" name="postimage"><br>
-        Post:
+        {% trans "post" %}:
         <textarea name="post_content" class="form-control" cols="40" rows="5"></textarea><br>
-        <input type="submit" class="btn btn-success" value="Edit"/>
+        <button type="submit" class="btn btn-success">{% trans "edit" %}</button>
     </form> <br>
-    <button class="btn btn-danger">Delete post</button>
+    <button class="btn btn-danger">{% trans "Delete post" %}</button>
 </div>
 
 

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Map{% endblock %}
+{% block title %}{% trans "map" %}{% endblock %}
 
 {% block head %}
     <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
@@ -11,12 +12,12 @@
 
 <div id='map' width="100%" style="height:400px"></div>
 
-<button class="btn btn-block btn-success mt-2" data-toggle="collapse" data-target="#map_options">View map options</button>
+<button class="btn btn-block btn-success mt-2" data-toggle="collapse" data-target="#map_options">{% trans "View map options" %}</button>
 
 <div id="map_options" class="collapse">
         <form>
-            <input type="checkbox" name="map_option" value="routes"> Show routes<br>
-            <input type="checkbox" name="map_option" value="places" checked> Show places<br>
+            <input type="checkbox" name="map_option" value="routes" checked>{% trans "Show routes" %}<br>
+            <input type="checkbox" name="map_option" value="places" checked>{% trans "Show locations" %}<br>
         </form>
 </div>
 

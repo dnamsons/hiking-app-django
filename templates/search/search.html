@@ -1,20 +1,21 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block content %}
 <div class="row">
     <div class="col-12">
-        {% if query != None %}<h2>Search results for {{ query }}:</h2>{% else %} <h2>Search:</h2> {% endif %}
+        {% if query != None %}<h2>{% trans "Search results for" %} {{ query }}:</h2>{% else %} <h2>{% trans "Search" %}:</h2> {% endif %}
         <form method="GET" action="" id="searchform">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" id="searchbox" value="{{ request.GET.q }}" name="q" placeholder="Pehaps you seek money?"/>
+                <input type="text" class="form-control" id="searchbox" value="{{ request.GET.q }}" name="q" placeholder="{% trans "searchplaceholder" %}"/>
                 <div class="input-group-append">
-                    <button class="btn btn-success" form="searchform" type="submit">Search</button>
+                    <button class="btn btn-success" form="searchform" type="submit">{% trans "Search" %}</button>
                 </div>
             </div>
         </form>
 
         {% if query != None %}
         <hr class="mt-3"/>
-        <h4>Users:</h4>
+        <h4>{% trans "Users" %}:</h4>
             {% if users %}
             <ul class="list-unstyled">
                 {% for u in users %}
@@ -30,7 +31,7 @@
                 {% endfor %}
             </ul>
             {% else %}
-                <p>No users found by username "{{ query }}".</p>
+                <p>{% trans "No users found by username" %} " {{ query }}".</p>
             {% endif %}
         <hr>
         {% endif %}
