@@ -68,22 +68,33 @@ def modify_like(request):
     user = User.objects.get(id=user_id)
     post = UserPost.objects.filter(post_id=post_id).first()
     like_count = post.like_amount
-    user_like = UserLike.objects.filter(post_id=post_id, like_author=user_id)
+    user_like = UserLike.objects.filter(post_id=post_id, like_author=user_id).first()
 
     if(request_type == 'minus'):
-        if user_like:
+        if not user_like:
+            UserLike.objects.create(like_author = user, post_id = post, like_type = '-')
+            post.like_amount = post.like_amount - 1
+            post.save()
+            response = 'okminuscreated_' + str(post.like_amount)
+        elif user_like and user_like.like_type == '+':
             post.like_amount = post.like_amount - 1
             post.save()
             user_like.delete()
-            response = 'okminus' + str(post.like_amount)
-        else:
-            response = 'minus_bad_doesnt_exist'
+            response = 'okplusnowdoesntexist_' + str(post.like_amount)
+        elif user_like and user_like.like_type == '-':
+            response = 'badisalreadyminus_' + str(post.like_amount)
+
     else:
         if not user_like:
+            UserLike.objects.create(like_author = user, post_id = post, like_type = '+')
             post.like_amount = post.like_amount + 1
             post.save()
-            UserLike.objects.create(post_id=post, like_author=user)
-            response = 'okplus' + str(post.like_amount)
-        else:
-            response = 'plus_bad_exists'
+            response = 'okpluscreated_' + str(post.like_amount)
+        elif user_like and user_like.like_type == '-':
+            post.like_amount = post.like_amount + 1
+            post.save()
+            user_like.delete()
+            response = 'okmminusnowdoesntexist_' + str(post.like_amount)
+        elif user_like and user_like.like_type == '+':
+            response = 'badisalreadyplus_' + str(post.like_amount)
     return JsonResponse({'response': response, 'like_count': post.like_amount})

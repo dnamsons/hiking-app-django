@@ -28,5 +28,6 @@ class UserComment(models.Model):
 class UserLike(models.Model):
     post_id = models.ForeignKey(UserPost, on_delete=models.CASCADE, related_name='%(class)s_author')
     like_author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='%(class)s_author')
+    like_type = models.CharField(max_length=1, default='0')
     def __str__(self):
         return str(self.post_id) + "_liked_by_" + self.like_author.username
