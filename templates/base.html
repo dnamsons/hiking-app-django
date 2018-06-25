@@ -39,7 +39,7 @@
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% trans "language" %}</a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu p-1" aria-labelledby="navbarDropdown">
 
                 <form action="{% url 'set_language' %}" method="post">
                   {% csrf_token %}
@@ -54,7 +54,7 @@
                             </option>
                         {% endfor %}
                     </select>
-                    <button type="submit" class="btn btn-success btn-block">{% trans "changelanguage" %}</button>
+                    <button type="submit" class="btn btn-success btn-block mt-1">{% trans "changelanguage" %}</button>
                 </form>
 
             </div>

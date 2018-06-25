@@ -28,17 +28,39 @@ def make_post(request):
             UserPost.objects.create(post_author = current_user, post = post_contents)
     return HttpResponseRedirect(url)
 
-def edit_post(request):
+def edit_post(request, post_id):
     if request.user.is_anonymous:
         alert_message = 'You must be logged in to edit your profile!'
         alert_type = 'danger'
         args = {'alert_message': alert_message, 'alert_type': alert_type}
-        return render(request, 'alert_page.html', args)
-    return render(request, 'posts/editpost.html')
+        return render(request,'alert_page.html', args)
+    post = UserPost.objects.get(post_id = post_id)
+    args = {
+        'post': post
+    }
+    return render(request, 'posts/editpost.html', args)
 
-# def make_edit(request):
+def update_post(request, post_id):
+    if request.method == 'POST':
+        new_text = request.POST.get('post_content')
+        if new_text != '':
+            post = UserPost.objects.get(post_id = post_id)
+            post.post = new_text
+            post.save()
+        else:
+            alert_message = 'Post can not be empty!'
+            alert_type = 'danger'
+            args = {'alert_message': alert_message, 'alert_type': alert_type}
+            return render(request,'alert_page.html', args)
+        return render(request, 'user/edit/update_profile.html')
+    else:
+        return render(request, '/')
+        
 
-# def delete_post(request):
+def delete_post(request, post_id):
+    url = reverse('home')
+    UserPost.objects.get(post_id = post_id).delete()
+    return HttpResponseRedirect(url)
     
 
 

@@ -114,7 +114,7 @@ msgstr "Here are the most recent posts"
 #: templates/home.html:20 templates/posts/editpost.html:4
 #: templates/user/profile.html:65
 msgid "editpost"
-msgstr "New post"
+msgstr "Edit post"
 
 #: templates/home.html:30
 msgid "endofposts"

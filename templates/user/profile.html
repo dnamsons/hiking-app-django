@@ -62,7 +62,7 @@
                 <img class="mr-3 rounded-circle follower-thumbnail" src="/media/{{ p.post_author.userprofile.profile_image }}" alt="{{ u.username}}" width="64" height="64">
                 <div class="media-body">
                         <img src="/media/{{ p.image }}" alt="{{ u.username}}" width="128" height="128">
-                   <h5 class="mt-0">{{ p.post_author }}{% if p.post_author.id == user.id %} <a href="">{% trans "editpost" %}</a> {%endif%}</h5>
+                   <h5 class="mt-0">{{ p.post_author }}{% if p.post_author.id == user.id %} <a href="/post/edit_post/{{ p.post_id }}/">{% trans "editpost" %}</a> {%endif%}</h5>
                     {{ p.post }}<br>
                     <div class="like_amount_count" id="{{ p.post_id }}" style="display: inline;">{{ p.like_amount }}</div>
                     <i class="fas fa-arrow-up" onclick="modify_like('plus')"></i>

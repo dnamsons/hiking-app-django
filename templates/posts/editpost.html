@@ -7,16 +7,15 @@
 
 {% if user.is_authenticated %}
 
+<h2>{% trans "editpost" %}</h2>
 <div class="form-group">
-    <form method="POST" action="make_post/" id="postform" enctype="multipart/form-data">
+    <form method="POST" action="update/" id="postform" enctype="multipart/form-data">
         {% csrf_token %}
-        {% trans "postimage" %}:
-        <input id="id_image" type="file" class="form-control" name="postimage"><br>
         {% trans "post" %}:
-        <textarea name="post_content" class="form-control" cols="40" rows="5"></textarea><br>
+        <textarea name="post_content" class="form-control" cols="40" rows="5">{{ post.post }}</textarea><br>
         <button type="submit" class="btn btn-success">{% trans "edit" %}</button>
     </form> <br>
-    <button class="btn btn-danger">{% trans "Delete post" %}</button>
+    <a class="btn btn-danger" href="{% url 'deletepost' post_id=post.post_id %}">{% trans "Delete post" %}</a>
 </div>
 
 
