@@ -8,6 +8,12 @@ from django.core.urlresolvers import reverse
 
 # Create your views here.
 
+def post_belong_to_user(author_id, user_id):
+    if(author_id == user_id):
+        return True
+    else:
+        return False
+
 def create_post(request):
     if request.user.is_anonymous:
         alert_message = 'You must be logged in to make a post!'
@@ -29,22 +35,43 @@ def make_post(request):
     return HttpResponseRedirect(url)
 
 def edit_post(request, post_id):
+    post = UserPost.objects.get(post_id = post_id)
     if request.user.is_anonymous:
         alert_message = 'You must be logged in to edit your profile!'
         alert_type = 'danger'
         args = {'alert_message': alert_message, 'alert_type': alert_type}
         return render(request,'alert_page.html', args)
-    post = UserPost.objects.get(post_id = post_id)
+    if not post_belong_to_user(request.user.id, post.post_author.id):
+        alert_message = 'You can not edit post, that you do not own!'
+        alert_type = 'danger'
+        args = {'alert_message': alert_message, 'alert_type': alert_type}
+        return render(request,'alert_page.html', args)
     args = {
         'post': post
     }
     return render(request, 'posts/editpost.html', args)
 
 def update_post(request, post_id):
+    post = UserPost.objects.get(post_id = post_id)
+    if request.user.is_anonymous:
+        alert_message = 'You must be logged in to edit your profile!'
+        alert_type = 'danger'
+        args = {'alert_message': alert_message, 'alert_type': alert_type}
+        return render(request,'alert_page.html', args)
+    if not post_belong_to_user(request.user.id, post.post_author.id):
+        alert_message = 'You can not edit post, that you do not own!'
+        alert_type = 'danger'
+        args = {'alert_message': alert_message, 'alert_type': alert_type}
+        return render(request,'alert_page.html', args)
+
     if request.method == 'POST':
         new_text = request.POST.get('post_content')
-        if new_text != '':
-            post = UserPost.objects.get(post_id = post_id)
+        if new_text == post.post:
+            alert_message = 'No changes have been made!'
+            alert_type = 'warning'
+            args = {'alert_message': alert_message, 'alert_type': alert_type}
+            return render(request,'alert_page.html', args)
+        elif new_text != '':
             post.post = new_text
             post.save()
         else:
